@@ -1,0 +1,83 @@
+[
+  {
+    "id": "fe3b1f9acfe2b5e534505516290997b93181b7bdf4b1caf2939549064f62b8b1",
+    "username": "user3",
+    "date": "06-07-2024",
+    "days": "7",
+    "title": "Update documentation",
+    "file": "src/App.test.tsx",
+    "line": 5
+  },
+  {
+    "id": "1937d8679c224a1530b91c8c380110a3197a3cda6e8f2bb608ac7231bdc2fc45",
+    "username": "alice_wang",
+    "date": "15-07-2024",
+    "days": "14",
+    "title": "Refactor the data fetching logic to use async/await ",
+    "file": "src/App.tsx",
+    "line": 16
+  },
+  {
+    "id": "15dd45e491e20043b3a570eac23d59e4773186fc151c3863a58643e8ac2b582c",
+    "username": "frank_miller",
+    "date": "25-07-2024",
+    "days": "8",
+    "title": "Document the API endpoints with detailed examples ",
+    "file": "src/Card.jsx",
+    "line": 21
+  },
+  {
+    "id": "73471c6a916da97cc0ac853a961a29e96a85a373753ba60052a8413b488a1984",
+    "username": "carol_johnson",
+    "date": "18-07-2024",
+    "days": "7",
+    "title": "Optimize the database queries for performance. ",
+    "file": "src/CardList.jsx",
+    "line": 21
+  },
+  {
+    "id": "54a2aefe217975de726028738feeb0b3a52b18679d5a78ddc4c21749ec2768c3",
+    "username": "user2",
+    "date": "06-06-2024",
+    "days": "5",
+    "title": "Fix bug Y",
+    "file": "src/CardList.jsx",
+    "line": 75
+  },
+  {
+    "id": "620304584566ed6fe4178d8b0d8ccb92568b5124ea744f5ad451df5d2aeb19ca",
+    "username": "hank_wilson",
+    "date": "17-07-2024",
+    "days": "4",
+    "title": "Fix the memory leak issue in the file upload functionality.",
+    "file": "src/TextBox.jsx",
+    "line": 21
+  },
+  {
+    "id": "c9eaa5a1beaac31b365d852ef1b3c8f8ca33b5a13f5fb4ca3aae306696d91c7c",
+    "username": "hanky_lson",
+    "date": "09-08-2024",
+    "days": "4",
+    "title": "Fix the leak issue in the file upload",
+    "file": "src/TextBox.jsx",
+    "line": 24
+  },
+  {
+    "id": "be245170ce03334709b7d54a35eb8bb57453551fc55800672709277f8e3a0639",
+    "username": "david_lee",
+    "date": "07-02-2024",
+    "days": "10",
+    "title": "Implement unit tests for the new authentication module. ",
+    "file": "src/index copy 1.tsx",
+    "line": 6
+  },
+  {
+    "id": "cf44e09d41ba29a270f1d8ae531bf9a2f097782c2ae4e2acbd9b491031a783f2",
+    "username": "david_lee",
+    "date": "20-07-2024",
+    "days": "10",
+    "title": "Implement unit tests for the new authentication module. ",
+    "file": "src/index.tsx",
+    "line": 6
+  }
+]
