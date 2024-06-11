@@ -6,7 +6,7 @@ To run the custom comment parser and store the data in `todo_new.json`, follow t
 2. Clone the repository and navigate to the project directory:
     ```
     git clone https://github.com/Parth0248/CommentParser
-    cd CommentParser
+    cd CommentParser/Todomanager
     ```
 
 3. Install the dependencies:
