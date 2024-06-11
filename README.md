@@ -24,4 +24,4 @@ To run the custom comment parser and store the data in `todo_new.json`, follow t
     This will execute the `cust-todo-parser.js` script and generate the `todo_new.json` file. This command is executed even when the source code is built or run using npm commands.
 
 ## Video link: 
-https://sprinklr-my.sharepoint.com/:v:/p/parth_maradia/EZZ-oLe5IgNDmpNc_BoG37ABycrTv94bXez-t83uOTJMfQ?e=x1UtVO
+[Dry Run](https://sprinklr-my.sharepoint.com/:v:/p/parth_maradia/EZZ-oLe5IgNDmpNc_BoG37ABlDaj439fD__p1Z6U-ednMQ?e=tn9Twe)
