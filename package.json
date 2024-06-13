@@ -1,0 +1,16 @@
+{
+  "name": "comments-manager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "extract": "node ./scripts/codeOptimizer/index.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "p-limit": "^5.0.0"
+  }
+}
