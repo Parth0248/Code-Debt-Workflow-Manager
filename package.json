@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "extract": "node ./scripts/codeOptimizer/index.js",
-    "send_alert": "nodemon -e ts --exec node --inspect=9239 --signal SIGINT -r ts-node/register ./scripts/teamsAlert/incoming-webhook-notification/src/index.ts"
+    "send_alert": "node ./scripts/TeamsAlert/src/index.js"
   },
   "type": "module",
   "keywords": [],
@@ -12,6 +12,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@microsoft/adaptivecards-tools": "^1.0.0",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
     "p-limit": "^5.0.0"
   },
   "devDependencies": {
