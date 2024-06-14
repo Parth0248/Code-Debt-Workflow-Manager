@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "extract": "node ./scripts/codeOptimizer/index.js",
-    "send_alert": "nodemon -e ts --exec node --inspect=9239 --signal SIGINT -r ts-node/register ./scripts/teamsAlert/incoming-webhook-notification/src/index.ts"
+    "send_alert": "node ./scripts/NewTeamsAlert/src/index.js"
   },
   "type": "module",
   "keywords": [],
