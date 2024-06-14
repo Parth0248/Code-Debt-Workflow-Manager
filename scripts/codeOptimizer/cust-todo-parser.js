@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
-const crypto = require("crypto");
+import fs from "fs";
+import path from "path";
+import crypto from "crypto";
 
 // Define check classes
 class TodoCheck {
@@ -209,7 +209,7 @@ function saveCommentsToFile(comments, filePath) {
 }
 
 // Parse comments and handle file saving logic
-const comments = parseComments("./src"); // Comment : take path from root directory 
+const comments = parseComments("../../../source code/"); // Comment : take path from root directory 
 handleFileSaving(comments, "todo_old.json", "todo_new.json");
 
 ///////////////////////////////////////////////////////////////////////////////////////

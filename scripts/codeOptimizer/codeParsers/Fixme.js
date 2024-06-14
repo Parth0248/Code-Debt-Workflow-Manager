@@ -1,9 +1,8 @@
 import REGEX_MAP from "../utils/commentRegex.js";
 import { generateUniqueId } from "../utils/generateUniqueId.js";
-import getCommentType from "../helper/getCommentType.js";
 
-const extractTODO = (content, fullPath) => {
-  const type = "TODO";
+const extractFIXME = (content, fullPath) => {
+  const type = "FIXME";
   const regex = REGEX_MAP[type].regex;
   const multiLineRegex = REGEX_MAP[type].multiLineRegex;
   const multiLineStarRegex = REGEX_MAP[type].multiLineStarRegex;

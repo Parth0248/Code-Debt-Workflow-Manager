@@ -5,42 +5,26 @@
 //
 
 import REGEX_MAP from "../utils/commentRegex.js";
-
+// extract comments from the content with matching regex
 const extractComments = (content) => {
-  const commentRegex = /(\/\*[\s\S]*?\*\/|\/\/.*)/g; // Match both single and multi-line comments
-  const tagRegex = new RegExp(
-    `(${Object.keys(REGEX_MAP).join("|")})`
-  ); // Match any of the tags in the REGEX_MAP
+  const comments = []; // Initialize comments array
 
-  // Join the comments and replace newlines with spaces within multiline comments
-  return (
-    content
-      .match(commentRegex)
-      ?.filter((comment) => comment.match(tagRegex)) // Filter comments with tags
-      .map((comment) => comment.replace(/\n\s*\*\s*/g, " ")) // Replace newlines with spaces within multiline comments
-      .join("\n") || ""
-  );
+  for (const type in REGEX_MAP) {
+    const regex = REGEX_MAP[type].regex;
+    const multiLineRegex = REGEX_MAP[type].multiLineRegex;
+    const multiLineStarRegex = REGEX_MAP[type].multiLineStarRegex;
+
+    let match;
+    // Check for single line, multi line and multi line with star comments
+    while (
+      (match = regex.exec(content)) !== null ||
+      (match = multiLineRegex.exec(content)) !== null ||
+      (match = multiLineStarRegex.exec(content)) !== null
+    ) {
+      comments.push(match[0]);
+    }
+  }
+
+  return comments.join("\n");
 };
-
 export default extractComments;
-
-
-// import extractFeatures from "./extractFeatures";
-// import REGEX_MAP from "../utils/commentRegex.js";
-
-// const extractComments = (content) => {
-//   const commentRegex = /(\/\*[\s\S]*?\*\/|\/\/.*)/g; // Match both single and multi-line comments
-//     // extract keys from the REGEX_MAP object and join them with '|' to create a regex pattern, the regex pattern should match any of the keys
-//     const tagRegex = new RegExp(
-//         `(${Object.keys(REGEX_MAP).join("|")})`
-//         ); // Match any of the tags in the REGEX_MAP
-
-//   return (
-//     content
-//       .match(commentRegex)
-//       ?.filter((comment) => comment.match(tagRegex)) // Filter comments with tags
-//       .join("\n") || ""
-//   ); // Join the remaining comments or return empty string if none
-// };
-
-// export default extractComments;

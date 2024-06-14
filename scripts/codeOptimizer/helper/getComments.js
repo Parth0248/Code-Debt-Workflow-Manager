@@ -14,16 +14,14 @@ const getComments = async (files) => {
       const content = await fs.promises.readFile(file, "utf-8");
       const fileComments = extractComments(content);
 
-      if(fileComments){
+      if (fileComments && fileComments.trim().length > 0) {
+        console.log(`Comments found in file: ${file}`)
         commentsMap.set(file, fileComments);
       }
-      return;
     } catch (error) {
       console.error(`Error occurred while parsing file: ${file}`, error);
+      failedFiles.push(file);
     }
-
-    failedFiles.push(file);
-    console.error(`Failed to parse file: ${file}`);
   };
 
   const parseAllFiles = async () => {
