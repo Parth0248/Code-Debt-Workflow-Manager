@@ -14,7 +14,8 @@ To run the custom comment parser and store the data in `todo_new.json`, follow t
     npm install
     ```
 
-4. npm ```run extract "path_to_source_code"``` this will extract all comments from source and log it to console for now.
+4. ```npm run extract "path_to_source_code"``` this will extract all comments from source and log it to console for now.
+5. ```npm run send_alert``` to send Teams Notification alert. 
 
 ## Video link: 
 [Dry Run](https://sprinklr-my.sharepoint.com/:v:/p/parth_maradia/EZZ-oLe5IgNDmpNc_BoG37ABlDaj439fD__p1Z6U-ednMQ?e=tn9Twe)
