@@ -1,19 +1,6 @@
 [
   [
     {
-      "id": "7838973cca9354aa246a76ac2614c1d9312b6753256081f14128ab055177985d",
-      "type": "TODO",
-      "username": "alice_wang",
-      "date": 1721001600000,
-      "days": "14",
-      "title": "Refactor the data fetching logic to use async/await",
-      "message": "Not that urgent.",
-      "file": "../source code/src/App.tsx",
-      "created_at": 1718363473761
-    }
-  ],
-  [
-    {
       "id": "46c75879c366724f2fda754eb93320a8fc09fa757337297626898556489e7ef2",
       "type": "TODO",
       "username": "frank_miller",
@@ -22,7 +9,20 @@
       "title": "Document the API endpoints with detailed examples",
       "message": "You got this Frank!",
       "file": "../source code/src/Card.jsx",
-      "created_at": 1718363473762
+      "created_at": 1718448578138
+    }
+  ],
+  [
+    {
+      "id": "7838973cca9354aa246a76ac2614c1d9312b6753256081f14128ab055177985d",
+      "type": "TODO",
+      "username": "alice_wang",
+      "date": 1721001600000,
+      "days": "14",
+      "title": "Refactor the data fetching logic to use async/await",
+      "message": "Not that urgent.",
+      "file": "../source code/src/App.tsx",
+      "created_at": 1718448578138
     }
   ],
   [
@@ -35,7 +35,7 @@
       "title": "Optimize the database queries for performance.",
       "message": "You got this Carol!",
       "file": "../source code/src/CardList.jsx",
-      "created_at": 1718363473762
+      "created_at": 1718448578138
     },
     {
       "id": "045d1ea008f0d65379675fdc581ed502aa425305991a5b5eb7cc109233be28af",
@@ -46,7 +46,7 @@
       "title": "Fix bug Y",
       "message": "Fix bug X after fixing Y",
       "file": "../source code/src/CardList.jsx",
-      "created_at": 1718363473762
+      "created_at": 1718448578138
     },
     {
       "id": "2dc1e937b5470ecf373e186a309ba6afc747ae49919d78625ef1ff5e08fdedf9",
@@ -57,20 +57,7 @@
       "title": "Optimize the database queries for performance.",
       "message": "You got this Carol!",
       "file": "../source code/src/CardList.jsx",
-      "created_at": 1718363473762
-    }
-  ],
-  [
-    {
-      "id": "fdc8f86415bdabe041aa55c6d1ce6626fce87690ac2877d926fccf3a65b0a270",
-      "type": "TODO",
-      "username": "david_lee",
-      "date": 1707264000000,
-      "days": "10",
-      "title": "Implement unit tests for the new authentication module.",
-      "message": "Not that urgent.",
-      "file": "../source code/src/index copy 1.tsx",
-      "created_at": 1718363473762
+      "created_at": 1718448578138
     }
   ],
   [
@@ -83,7 +70,7 @@
       "title": "Update documentation",
       "message": "Finish it asap",
       "file": "../source code/src/App.test.tsx",
-      "created_at": 1718363473762
+      "created_at": 1718448578138
     }
   ],
   [
@@ -96,7 +83,7 @@
       "title": "Fix the memory leak issue in the file upload functionality.\n*",
       "message": "Check for 2nd line comment for TODO.",
       "file": "../source code/src/TextBox.jsx",
-      "created_at": 1718363473762
+      "created_at": 1718448578138
     }
   ],
   [
@@ -109,7 +96,20 @@
       "title": "Implement unit tests for the new authentication module.",
       "message": "Very urgent.",
       "file": "../source code/src/index.tsx",
-      "created_at": 1718363473763
+      "created_at": 1718448578138
+    }
+  ],
+  [
+    {
+      "id": "fdc8f86415bdabe041aa55c6d1ce6626fce87690ac2877d926fccf3a65b0a270",
+      "type": "TODO",
+      "username": "david_lee",
+      "date": 1707264000000,
+      "days": "10",
+      "title": "Implement unit tests for the new authentication module.",
+      "message": "Not that urgent.",
+      "file": "../source code/src/index copy 1.tsx",
+      "created_at": 1718448578138
     }
   ]
 ]

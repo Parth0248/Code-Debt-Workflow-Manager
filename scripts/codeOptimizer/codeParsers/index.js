@@ -17,7 +17,6 @@ const getCommentsFromDirectory = async (directory) => {
   // console.log( comments );
   for (const filePath of comments.keys()) {
     const fileComments = comments.get(filePath);
-    console.log( fileComments );
     const todoComments = extractTODO(fileComments, filePath);
     // const fixmeComments = extractFIXME(fileComments);
     if(todoComments){

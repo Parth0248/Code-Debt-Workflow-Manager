@@ -1,0 +1,101 @@
+[
+  {
+    "id": "3ff7edadc0ae243948f51fed4be0ee723f2c7514b807eb72230fb42c48b52efe",
+    "type": "TODO",
+    "username": "carol_johnson",
+    "date": 1721865600000,
+    "days": "8",
+    "title": "Document the API endpoints with detailed examples",
+    "message": "You got this Frank!",
+    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/Card.jsx",
+    "created_at": 1718456228628
+  },
+  {
+    "id": "da05f1452f94d37e0787edfdc4a1204c1bb4c0aef41c561094c303d1775f46ec",
+    "type": "TODO",
+    "username": "alice_wang",
+    "date": 1721001600000,
+    "days": "14",
+    "title": "Refactor the data fetching logic to use async/await",
+    "message": "Not that urgent.",
+    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/App.tsx",
+    "created_at": 1718456228629
+  },
+  {
+    "id": "b93d458f8d65af7a6a5772767d638ce4a6fef6da2b4aed41a9d5310bbca2f2c0",
+    "type": "TODO",
+    "username": "carol_johnson",
+    "date": 1721260800000,
+    "days": "9",
+    "title": "Optimize the database queries for performance.",
+    "message": "You got this Carol!",
+    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/CardList.jsx",
+    "created_at": 1718456228629
+  },
+  {
+    "id": "194b82bd388256f0d038c570259c194944ddaf13ae78dac589011000ceba8c13",
+    "type": "TODO",
+    "username": "user2",
+    "date": 1717632000000,
+    "days": "5",
+    "title": "Fix bug Y",
+    "message": "Fix bug X after fixing Y",
+    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/CardList.jsx",
+    "created_at": 1718456228629
+  },
+  {
+    "id": "b93d458f8d65af7a6a5772767d638ce4a6fef6da2b4aed41a9d5310bbca2f2c0",
+    "type": "TODO",
+    "username": "carol_johnson",
+    "date": 1721260800000,
+    "days": "7",
+    "title": "Optimize the database queries for speed.",
+    "message": "You got this Carol!",
+    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/CardList.jsx",
+    "created_at": 1718456228629
+  },
+  {
+    "id": "e7ed966cffca9d8c32edb00366483b28d484d113449058e44c2d5df40ec27546",
+    "type": "TODO",
+    "username": "hank_wilson",
+    "date": 1721174400000,
+    "days": "4",
+    "title": "Fix the memory leak issue in the file upload functionality.\n*",
+    "message": "Check for 2nd line comment for TODO.",
+    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/TextBox.jsx",
+    "created_at": 1718456228629
+  },
+  {
+    "id": "8f445cedb5b51441fa331d7f2116be3fd7bc9a3cd4399683c2852f6434430811",
+    "type": "TODO",
+    "username": "user3",
+    "date": 1720224000000,
+    "days": "7",
+    "title": "Update documentation",
+    "message": "Finish it asap",
+    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/App.test.tsx",
+    "created_at": 1718456228629
+  },
+  {
+    "id": "dcfabd60398dbb772d1af6020137f61b8b4f4b4dbed32e8ca970c9d10a0491db",
+    "type": "TODO",
+    "username": "david_lee",
+    "date": 1721433600000,
+    "days": "10",
+    "title": "Implement unit tests for the new authentication module.",
+    "message": "Very urgent.",
+    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/index.tsx",
+    "created_at": 1718456228629
+  },
+  {
+    "id": "a753f36301f8e4db4e810ac0b165c69351d0669bc4f225a0147049f9cc137322",
+    "type": "TODO",
+    "username": "david_lee",
+    "date": 1707264000000,
+    "days": "10",
+    "title": "Implement unit tests for the new authentication module.",
+    "message": "Not that urgent.",
+    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/index copy 1.tsx",
+    "created_at": 1718456228629
+  }
+]
