@@ -2,18 +2,9 @@ import fs from "fs";
 import path from "path";
 import { todo_new_path, todo_old_path } from "./filepath.js";
 
-function ensureDirectoryExistence(filePath) {
-  const dirname = path.dirname(filePath);
-  if (fs.existsSync(dirname)) {
-    return true;
-  }
-  fs.mkdirSync(dirname, { recursive: true });
-}
+import ensureDirectoryExistence from "./ensureDirectory.js";
 
-function saveCommentsToFile(comments, filePath) {
-  ensureDirectoryExistence(filePath);
-  fs.writeFileSync(filePath, JSON.stringify(comments, null, 2), "utf8");
-}
+import saveCommentsToFile from "./saveComment.js";
 
 const generateReport = async (comments) => {
   try {

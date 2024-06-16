@@ -17,6 +17,7 @@ const extractTODO = (content, fullPath) => {
     (match = multiLineRegex.exec(content)) !== null ||
     (match = multiLineStarRegex.exec(content)) !== null
   ) {
+    // obtain the full path of the file using 
     const id = generateUniqueId(match[0], fullPath, match[1], match[2]);
     const [day, month, year] = match[2].split("-"); // Assuming DD-MM-YYYY format
     const dateObj = new Date(`${year}-${month}-${day}`);

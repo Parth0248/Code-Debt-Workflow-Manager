@@ -28,9 +28,10 @@
         },
         {
           "type": "TextBlock",
-          "text": "File: [${file}](https://gitlab.com/your-repo/${file})",
+          "text": "File: ${shortFilePath}",
           "wrap": true,
-          "color": "Accent",
+          "color": "accent",
+          "weight": "Bolder",
           "tooltip": "Click to open file"
         },
         {
@@ -40,7 +41,7 @@
         },
         {
           "type": "TextBlock",
-          "text": "You have XX tasks left!",
+          "text": "You have ${pendingTasks} tasks left!",
           "wrap": true
         },
         {
@@ -49,11 +50,13 @@
             {
               "type": "TextBlock",
               "text": "Other pending tasks in this file:",
+              "color": "warning",
+              "size": "Medium",
               "weight": "Bolder"
             },
             {
               "type": "TextBlock",
-              "text": "- Update unit tests\n- Improve error handling",
+              "text": "${pendingTaskContent}",
               "wrap": true,
               "isSubtle": true
             }
@@ -71,10 +74,8 @@
                   "type": "ActionSet",
                   "actions": [
                     {
-                      "type": "Action.Submit",
-                      "data": {
-                        "action": "complete"
-                      },
+                      "type": "Action.OpenUrl",
+                      "url": "vscode://file/${file}",
                       "title": "Open in VS Code"
                     }
                   ]
@@ -93,8 +94,8 @@
         "type": "mention",
         "text": "<at>${username}</at>",
         "mentioned": {
-          "id": "parth.maradia@sprinklr.com",
-          "name": "Parth Maradia"
+          "id": "abc@gmail.com",
+          "name": "${username}"
         }
       }
     ]

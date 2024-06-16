@@ -1,35 +1,35 @@
 import fs from "fs";
 import extractComments from "./extractComments.js";
-import pLimit from "p-limit";
+import async from "async";
 
 // Set the concurrency limit
-const limit = pLimit(1000);
+const CONCURRENCY_LIMIT = 1000;
 
 const getComments = async (files) => {
   const commentsMap = new Map();
   const failedFiles = [];
 
-  const parseFile = async (file) => {
-    try {
-      const content = await fs.promises.readFile(file, "utf-8");
+  const parseFile = (file, callback) => {
+    fs.readFile(file, "utf-8", (error, content) => {
+      if (error) {
+        console.error(`Error occurred while parsing file: ${file}`, error);
+        failedFiles.push(file);
+        return callback(null);
+      }
       const fileComments = extractComments(content);
-
       if (fileComments && fileComments.trim().length > 0) {
-        console.log(`Comments found in file: ${file}`)
+        console.log(`Comments found in file: ${file}`);
         commentsMap.set(file, fileComments);
       }
-    } catch (error) {
-      console.error(`Error occurred while parsing file: ${file}`, error);
-      failedFiles.push(file);
-    }
+      callback(null);
+    });
   };
 
-  const parseAllFiles = async () => {
-    const promises = files.map((file) => limit(() => parseFile(file)));
-    await Promise.all(promises);
-  };
-
-  await parseAllFiles();
+  await new Promise((resolve) => {
+    async.mapLimit(files, CONCURRENCY_LIMIT, parseFile, () => {
+      resolve();
+    });
+  });
 
   if (commentsMap.size === 0) {
     console.log("No comments found in any file");
