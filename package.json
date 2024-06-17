@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "extract": "node ./scripts/codeOptimizer/index.js",
-    "send_alert": "node ./scripts/NewTeamsAlert/src/index.js"
+    "extract": "node ./scripts/codeOptimizer",
+    "send_alert": "node ./scripts/NewTeamsAlert/src"
   },
   "type": "module",
   "keywords": [],

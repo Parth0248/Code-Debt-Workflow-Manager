@@ -6,7 +6,7 @@ import pLimit from "p-limit";
 const limit = pLimit(1000);
 
 const getComments = async (files) => {
-  const commentsMap = new Map();
+  const commentsMap = new Map(); // Requirement of Map can usually be fulfilled by an object. Please see if we can use that here
   const failedFiles = [];
 
   const parseFile = async (file) => {
@@ -15,7 +15,7 @@ const getComments = async (files) => {
       const fileComments = extractComments(content);
 
       if (fileComments && fileComments.trim().length > 0) {
-        console.log(`Comments found in file: ${file}`)
+        console.log(`Comments found in file: ${file}`);
         commentsMap.set(file, fileComments);
       }
     } catch (error) {

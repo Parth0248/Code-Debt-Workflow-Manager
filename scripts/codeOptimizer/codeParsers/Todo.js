@@ -3,7 +3,7 @@ import { generateUniqueId } from "../utils/generateUniqueId.js";
 import getCommentType from "../helper/getCommentType.js";
 
 const extractTODO = (content, fullPath) => {
-  const type = "TODO";
+  const type = "TODO"; // Move this out of the function as it does not have any dependency with extractTODO
   const regex = REGEX_MAP[type].regex;
   const multiLineRegex = REGEX_MAP[type].multiLineRegex;
   const multiLineStarRegex = REGEX_MAP[type].multiLineStarRegex;
@@ -13,7 +13,7 @@ const extractTODO = (content, fullPath) => {
   let match;
   // Check for single line, multi line and multi line with star comments
   while (
-    (match = regex.exec(content)) !== null ||
+    (match = regex.exec(content)) !== null || // This is not good pattern of writing code, let us discuss better ways of writing the same logic
     (match = multiLineRegex.exec(content)) !== null ||
     (match = multiLineStarRegex.exec(content)) !== null
   ) {

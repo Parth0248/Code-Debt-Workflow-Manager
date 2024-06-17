@@ -20,6 +20,7 @@ class TodoCheck {
   validate(comment) {
     let match = this.regex.exec(comment);
     if (!match) {
+      // Not a good pattern, let us discuss a better pattern for this logic
       match = this.multiLineRegex.exec(comment);
     }
     if (!match) {
@@ -56,6 +57,7 @@ class DpCheck {
   validate(comment) {
     let match = this.regex.exec(comment);
     if (!match) {
+      // Not a good pattern, let us discuss a better pattern for this logic
       match = this.multiLineRegex.exec(comment);
     }
     if (!match) {
@@ -82,6 +84,7 @@ const checkMap = {
 
 // Function to generate a unique ID for each comment
 function generateUniqueId(content, filePath, username, date) {
+  // Saw the same code in a different file as well, can we use that here?
   const hash = crypto.createHash("sha256");
   hash.update(content + filePath + username + date);
   return hash.digest("hex");
@@ -134,7 +137,6 @@ function parseComments(directory) {
   const comments = [];
 
   function readFiles(dir) {
-
     fs.readdirSync(dir).forEach((file) => {
       const fullPath = path.join(dir, file);
       if (fs.lstatSync(fullPath).isDirectory()) {
@@ -143,8 +145,7 @@ function parseComments(directory) {
         const unfiltered_content = fs.readFileSync(fullPath, "utf8"); // Comment : Modularize this code and Read files Asyncronously
 
         // Scalable Comment Extraction to avoid parsing the entire file
-        const filteredContent = extractCommentsWithTags(unfiltered_content); 
-        
+        const filteredContent = extractCommentsWithTags(unfiltered_content);
 
         const content = filteredContent;
         // console.log(content);
@@ -163,7 +164,7 @@ function parseComments(directory) {
             const [day, month, year] = match[2].split("-"); // Assuming DD-MM-YYYY format
             const dateObj = new Date(`${year}-${month}-${day}`);
             const epochDate = dateObj.getTime(); // Epoch time in milliseconds
-            
+
             // Get current timestamp in epoch format
             const currentDate = new Date().getTime();
 
@@ -209,7 +210,7 @@ function saveCommentsToFile(comments, filePath) {
 }
 
 // Parse comments and handle file saving logic
-const comments = parseComments("../../../source code/"); // Comment : take path from root directory 
+const comments = parseComments("../../../source code/"); // Comment : take path from root directory
 handleFileSaving(comments, "todo_old.json", "todo_new.json");
 
 ///////////////////////////////////////////////////////////////////////////////////////

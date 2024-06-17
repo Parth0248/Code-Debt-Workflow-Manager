@@ -1,6 +1,8 @@
 import REGEX_MAP from "../utils/commentRegex.js";
 import { generateUniqueId } from "../utils/generateUniqueId.js";
 
+// Same comments of Todo.js applies here as well
+
 const extractFIXME = (content, fullPath) => {
   const type = "FIXME";
   const regex = REGEX_MAP[type].regex;
