@@ -5,66 +5,84 @@
   "body": [
     {
       "type": "Container",
+      "spacing": "Medium",
       "items": [
         {
           "type": "TextBlock",
           "text": "Hi <at>${username}</at>",
           "weight": "Bolder",
+          "size": "medium",
           "wrap": true
         },
         {
           "type": "TextBlock",
-          "text": "Urgent Task: Only ${days} days left",
-          "wrap": true,
+          "text": "${alertMessage}",
           "weight": "Bolder",
-          "size": "Large"
+          "size": "extraLarge",
+          "color": "${alertColor}",
+          "wrap": true,
+          "spacing": "small"
         },
         {
           "type": "TextBlock",
           "text": "${type}: ${title}",
-          "wrap": true,
           "weight": "Bolder",
-          "size": "Medium"
+          "size": "Large",
+          "wrap": true,
+          "spacing": "small"
         },
         {
           "type": "TextBlock",
           "text": "File: ${shortFilePath}",
-          "wrap": true,
-          "color": "accent",
           "weight": "Bolder",
-          "tooltip": "Click to open file"
+          "color": "Accent",
+          "size": "medium",
+          "wrap": true,
+          "tooltip": "Click to open file",
+          "spacing": "small"
         },
         {
           "type": "TextBlock",
           "text": "${message}",
-          "wrap": true
+          "wrap": true,
+          "size": "large",
+          "spacing": "medium"
         },
         {
           "type": "TextBlock",
           "text": "You have ${pendingTasks} tasks left!",
-          "wrap": true
+          "wrap": true,
+          "weight": "bolder",
+          "size": "medium",
+          "spacing": "medium"
         },
         {
           "type": "Container",
+          "spacing": "Medium",
           "items": [
             {
               "type": "TextBlock",
-              "text": "Other pending tasks in this file:",
+              "text": "Other pending tasks:",
+              "weight": "bolder",
+              "size": "medium",
               "color": "warning",
-              "size": "Medium",
-              "weight": "Bolder"
+              "wrap": true,
+              "spacing": "small"
             },
             {
               "type": "TextBlock",
               "text": "${pendingTaskContent}",
+              "isSubtle": true,
               "wrap": true,
-              "isSubtle": true
+              "spacing": "Small"
             }
           ],
-          "bleed": true
+          "bleed": true,
+          "style": "emphasis"
         },
         {
           "type": "ColumnSet",
+          "spacing": "Medium",
           "columns": [
             {
               "type": "Column",
@@ -76,7 +94,40 @@
                     {
                       "type": "Action.OpenUrl",
                       "url": "vscode://file/${file}",
-                      "title": "Open in VS Code"
+                      "title": "Open in Editor"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "Input.ChoiceSet",
+                  "id": "codeEditor",
+                  "placeholder": "Select Code Editor",
+                  "choices": [
+                    {
+                      "title": "VS Code",
+                      "value": "vscode"
+                    },
+                    {
+                      "title": "Sublime Text",
+                      "value": "sublime"
+                    },
+                    {
+                      "title": "Atom",
+                      "value": "atom"
+                    },
+                    {
+                      "title": "Notepad++",
+                      "value": "notepad++"
+                    },
+                    {
+                      "title": "IntelliJ",
+                      "value": "intellij"
                     }
                   ]
                 }

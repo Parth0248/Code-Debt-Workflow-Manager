@@ -1,8 +1,9 @@
 import REGEX_MAP from "../utils/commentRegex.js";
 import { generateUniqueId } from "../utils/generateUniqueId.js";
+import commentTypes from "../utils/commentTypes.js";
 
 const extractFIXME = (content, fullPath) => {
-  const type = "FIXME";
+  const type = commentTypes[1]; // "FIXME"
   const regex = REGEX_MAP[type].regex;
   const multiLineRegex = REGEX_MAP[type].multiLineRegex;
   const multiLineStarRegex = REGEX_MAP[type].multiLineStarRegex;
@@ -11,11 +12,10 @@ const extractFIXME = (content, fullPath) => {
 
   let match;
   // Check for single line, multi line and multi line with star comments
-  while (
-    (match = regex.exec(content)) !== null ||
-    (match = multiLineRegex.exec(content)) !== null ||
-    (match = multiLineStarRegex.exec(content)) !== null
-  ) {
+  for(const re in [regex, multiLineRegex, multiLineStarRegex]) {
+    match = re.exec(content);
+    if (match === null) continue;
+    
     const id = generateUniqueId(match[0], fullPath, match[1], match[2]);
     const [day, month, year] = match[2].split("-"); // Assuming DD-MM-YYYY format
     const dateObj = new Date(`${year}-${month}-${day}`);
@@ -44,4 +44,4 @@ const extractFIXME = (content, fullPath) => {
   return comments;
 };
 
-export default extractTODO;
+export default extractFIXME;
