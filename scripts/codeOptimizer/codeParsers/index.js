@@ -11,7 +11,7 @@ import extractTODO from "./Todo.js";
 const getCommentsFromDirectory = async (directory) => {
   const files = await getFiles(directory); 
   const comments = await getComments(files);
-  let todos = [];
+  const todos = [];
   // comments is a map, where key is file path and value is the comments in the file
   // check tags of comments and extract based on the tag asyncronously
   // console.log( comments );

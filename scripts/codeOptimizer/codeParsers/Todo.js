@@ -1,23 +1,23 @@
 import REGEX_MAP from "../utils/commentRegex.js";
 import { generateUniqueId } from "../utils/generateUniqueId.js";
 import getCommentType from "../helper/getCommentType.js";
+import commentTypes from "../utils/commentTypes.js";
 
 const extractTODO = (content, fullPath) => {
-  const type = "TODO";
+  const type = commentTypes[0];
   const regex = REGEX_MAP[type].regex;
   const multiLineRegex = REGEX_MAP[type].multiLineRegex;
   const multiLineStarRegex = REGEX_MAP[type].multiLineStarRegex;
 
   const comments = []; // Initialize comments array
 
-  let match;
   // Check for single line, multi line and multi line with star comments
-  while (
-    (match = regex.exec(content)) !== null ||
-    (match = multiLineRegex.exec(content)) !== null ||
-    (match = multiLineStarRegex.exec(content)) !== null
-  ) {
-    // obtain the full path of the file using 
+  for (const re of [regex, multiLineRegex, multiLineStarRegex]) {
+    
+    const match = re.exec(content);
+    if (match === null) continue;
+    
+    // obtain the full path of the file using
     const id = generateUniqueId(match[0], fullPath, match[1], match[2]);
     const [day, month, year] = match[2].split("-"); // Assuming DD-MM-YYYY format
     const dateObj = new Date(`${year}-${month}-${day}`);
@@ -42,7 +42,6 @@ const extractTODO = (content, fullPath) => {
     // Move the index to avoid infinite loop
     content = content.slice(match.index + match[0].length);
   }
-
   return comments;
 };
 

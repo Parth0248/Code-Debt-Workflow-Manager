@@ -7,6 +7,9 @@ import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
 import WebhookTarget from "../webhookTarget.js";
 import updatePendingTasks from "./updatePendingTasks.js";
 import pendingTask from "./pendingTask.js";
+import alertText from "../utils/alertText.js";
+import handleUserSelection from "./handleUserSelection.js";
+import handleSubmit from "./handleSubmit.js";
 
 // Fetch the webhook URL from environment variables
 const webhookUrl = process.env.WEBHOOK_URL;
@@ -23,7 +26,7 @@ const sendAlert = async (tasks) => {
   
   pendingTask(pendingTaskCount, tasks);
 
-  const task = tasks[2]; // CHANGE THIS TO A LOOP TO SEND ALERT FOR ALL TASKS
+  const task = tasks[0]; // CHANGE THIS TO A LOOP TO SEND ALERT FOR ALL TASKS
   sendAlertForTask(task, pendingTaskCount);
 }
 
@@ -35,20 +38,26 @@ const sendAlertForTask = async (task, pendingTaskCount) => {
   const cardTemplate = JSON.parse(JSON.stringify(template));
 
   try {
-    const modifiedTask = task;
-    // add a new property to the task object to store Short File Path
-    modifiedTask.shortFilePath = task.file.split('/').slice(-3).join('/');
-    modifiedTask.pendingTasks = pending.length;
 
+    const alertTitle = alertText(task.days);
+    
+    const modifiedTask = {
+      ...task,
+      shortFilePath: task.file.split('/').slice(-3).join('/'),
+      pendingTasks: pending.length > 0 ? pending.length - 1 : 0,
+      alertMessage: alertTitle.text,
+      alertColor: alertTitle.color
+    };
+    
     const pendingTasks = Array.from(pending.values())
       .filter(task => task.title !== modifiedTask.title)
       .map(task => task.title);
-
-    console.log("Pending tasks: ", pendingTasks);
     
     // adds max 3 pending tasks to the card
     const updatedCardTemplate = updatePendingTasks(cardTemplate, pendingTasks);
-    
+    // updatedCardTemplate = updateAlertMessage(updatedCardTemplate, task.days);
+    // handleSubmit(updatedCardTemplate, modifiedTask);
+
     await webhookTarget.sendAdaptiveCard(
       AdaptiveCards.declare(updatedCardTemplate).render(modifiedTask)
     );
