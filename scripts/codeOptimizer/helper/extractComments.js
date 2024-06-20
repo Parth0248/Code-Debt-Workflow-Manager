@@ -17,11 +17,33 @@ const extractComments = (content) => {
     let match;
     // Check for single line, multi line and multi line with star comments
     while (
+      // What do we need a loop for?
       (match = regex.exec(content)) !== null ||
       (match = multiLineRegex.exec(content)) !== null ||
       (match = multiLineStarRegex.exec(content)) !== null
     ) {
       comments.push(match[0]);
+    }
+
+    // The above code is not readable. The below code is more readable and maintainable. We should not go after writing the shortest codes.
+    // Instead, we should go after writing the cleanest code.
+    while (true) {
+      const singleLineMatch = regex.exec(content);
+      if (singleLineMatch) {
+        comments.push(singleLineMatch[0]);
+        continue;
+      }
+      const multiLineMatch = multiLineRegex.exec(content);
+      if (multiLineMatch) {
+        comments.push(multiLineMatch[0]);
+        continue;
+      }
+      const multiLineStarMatch = multiLineStarRegex.exec(content);
+      if (multiLineStarMatch) {
+        comments.push(multiLineStarMatch[0]);
+        continue;
+      }
+      break;
     }
   }
 
