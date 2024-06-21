@@ -13,10 +13,10 @@ const extractTODO = (content, fullPath) => {
 
   // Check for single line, multi line and multi line with star comments
   for (const re of [regex, multiLineRegex, multiLineStarRegex]) {
-    
     const match = re.exec(content);
     if (match === null) continue;
-    
+
+    // Incomplete sentence. Either complete it or remove the comment
     // obtain the full path of the file using
     const id = generateUniqueId(match[0], fullPath, match[1], match[2]);
     const [day, month, year] = match[2].split("-"); // Assuming DD-MM-YYYY format
@@ -36,10 +36,12 @@ const extractTODO = (content, fullPath) => {
       message: match[5]?.trim() || "",
       file: fullPath,
       // line: content.substr(0, match.index).split("\n").length,
+      // currentDate will get reset each time a file is read, even if the issue is old.
       created_at: currentDate, // Add the created_at field
     });
 
     // Move the index to avoid infinite loop
+    // Find out the complexity of below statement. Let us discuss how this can be reduced.
     content = content.slice(match.index + match[0].length);
   }
   return comments;

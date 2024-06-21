@@ -9,20 +9,22 @@ import extractTODO from "./Todo.js";
 // import extractFIXME from "./Fixme";
 
 const getCommentsFromDirectory = async (directory) => {
-  const files = await getFiles(directory); 
+  const files = await getFiles(directory);
   const comments = await getComments(files);
-  const todos = [];
+  const todos = []; // Rename to todoList
   // comments is a map, where key is file path and value is the comments in the file
   // check tags of comments and extract based on the tag asyncronously
+  // Remove unnecessary commented code from Main branch.
   // console.log( comments );
+
+  // Check if we can use comments.reduce instead of for..of. If yes, the loop will not have a dependency outside of its scope and become pure.
   for (const filePath of comments.keys()) {
     const fileComments = comments.get(filePath);
     const todoComments = extractTODO(fileComments, filePath);
     // const fixmeComments = extractFIXME(fileComments);
-    if(todoComments){
-        todos.push(todoComments);
+    if (todoComments) {
+      todos.push(todoComments);
     }
-    
   }
   return todos;
 };

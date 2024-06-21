@@ -2,6 +2,7 @@ import fs from "fs";
 import extractComments from "./extractComments.js";
 import async from "async";
 
+// No need of this commented line
 // Set the concurrency limit
 const CONCURRENCY_LIMIT = 1000;
 
