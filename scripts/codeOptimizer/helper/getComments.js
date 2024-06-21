@@ -2,7 +2,6 @@ import fs from "fs";
 import extractComments from "./extractComments.js";
 import async from "async";
 
-// Set the concurrency limit
 const CONCURRENCY_LIMIT = 1000;
 
 const getComments = async (files) => {

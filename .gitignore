@@ -1,2 +1,4 @@
 node_modules
 TodoManager
+scripts/codeOptimizer/data
+scripts/GitLabIssue/data

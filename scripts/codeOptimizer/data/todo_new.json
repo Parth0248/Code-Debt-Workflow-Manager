@@ -1,68 +1,62 @@
 [
   {
-    "id": "8f445cedb5b51441fa331d7f2116be3fd7bc9a3cd4399683c2852f6434430811",
+    "id": "4455b2fc4fb7a3713f3de008a035193a44e48d819c50d0453b6076a89c318963",
     "type": "TODO",
-    "username": "user3",
-    "date": 1720224000000,
-    "days": "1",
-    "title": "Update documentation",
-    "message": "Finish it asap",
-    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/App.test.tsx",
-    "created_at": 1718606109942
-  },
-  {
-    "id": "b93d458f8d65af7a6a5772767d638ce4a6fef6da2b4aed41a9d5310bbca2f2c0",
-    "type": "TODO",
-    "username": "carol_johnson",
-    "date": 1721260800000,
-    "days": "7",
-    "title": "Optimize the database queries for performance.",
-    "message": "You got this Carol!",
-    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/CardList.jsx",
-    "created_at": 1718606109942
-  },
-  {
-    "id": "194b82bd388256f0d038c570259c194944ddaf13ae78dac589011000ceba8c13",
-    "type": "TODO",
-    "username": "carol_johnson",
-    "date": 1717632000000,
+    "username": "alice_wang",
+    "date": 1721001600000,
     "days": "14",
-    "title": "Fix bug Y",
-    "message": "Fix bug X after fixing Y",
-    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/CardList.jsx",
-    "created_at": 1718606109942
-  },
-  {
-    "id": "a753f36301f8e4db4e810ac0b165c69351d0669bc4f225a0147049f9cc137322",
-    "type": "TODO",
-    "username": "david_lee",
-    "date": 1707264000000,
-    "days": "30",
-    "title": "Implement unit tests for the new authentication module.",
+    "title": "Refactor the data fetching logic to use async/await",
     "message": "Not that urgent.",
-    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/index copy 1.tsx",
-    "created_at": 1718606109942
+    "file": "/Users/parth.maradia/Project/Intern-Project/sourceCode/src/App.tsx"
   },
   {
-    "id": "3ff7edadc0ae243948f51fed4be0ee723f2c7514b807eb72230fb42c48b52efe",
+    "id": "8c06542205d39befb7df33271ff71b24a2ee98ebe401b1fa8d7df09fc60aa311",
     "type": "TODO",
     "username": "frank_miller",
     "date": 1721865600000,
-    "days": "45",
+    "days": "8",
     "title": "Document the API endpoints with detailed examples",
     "message": "You got this Frank!",
-    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/Card.jsx",
-    "created_at": 1718606109942
+    "file": "/Users/parth.maradia/Project/Intern-Project/sourceCode/src/Card.jsx"
   },
   {
-    "id": "e7ed966cffca9d8c32edb00366483b28d484d113449058e44c2d5df40ec27546",
+    "id": "bb22ddc2efc30b1f6ca2a46abbc371c2f7b454f4da7a1c9bd62b5903401fd6a1",
     "type": "TODO",
-    "username": "carol_johnson",
-    "date": 1721174400000,
+    "username": "hanky_lson",
+    "date": 1723161600000,
     "days": "4",
-    "title": "Fix the memory leak issue in the file upload functionality.\n",
-    "message": "Check for 2nd line comment for TODO.",
-    "file": "/Users/parth.maradia/Project/Intern Project/source code/src/TextBox.jsx",
-    "created_at": 1718606109942
+    "title": "Fix the leak issue in the file upload",
+    "message": "using 2nd line comment for TODO without leading star.",
+    "file": "/Users/parth.maradia/Project/Intern-Project/sourceCode/src/TextBox.jsx"
+  },
+  {
+    "id": "17777e494ea9eb49fd017722cc4075823269f8e2f224c7cf379a70a80ae263ea",
+    "type": "TODO",
+    "username": "david_lee",
+    "date": 1721433600000,
+    "days": "10",
+    "title": "Implement unit tests for the new authentication module.",
+    "message": "Very urgent.",
+    "file": "/Users/parth.maradia/Project/Intern-Project/sourceCode/src/index.tsx"
+  },
+  {
+    "id": "6f208d7d170c6d73ca981a7e3645e1d3164b2f385745d48c4e8692d2f52ac927",
+    "type": "TODO",
+    "username": "user2",
+    "date": 1717632000000,
+    "days": "5",
+    "title": "Fix bug Y",
+    "message": "Fix bug X after fixing Y",
+    "file": "/Users/parth.maradia/Project/Intern-Project/sourceCode/src/CardList.jsx"
+  },
+  {
+    "id": "755bcb5c85060d11bacaddbe6f902d6c24254b0f8c74a720bd3175a0273585b3",
+    "type": "TODO",
+    "username": "carol_son",
+    "date": 1721260800000,
+    "days": "7",
+    "title": "Optimize the database queries for performance.",
+    "message": "Make sure the lag is less than 1ms",
+    "file": "/Users/parth.maradia/Project/Intern-Project/sourceCode/src/CardList.jsx"
   }
 ]
