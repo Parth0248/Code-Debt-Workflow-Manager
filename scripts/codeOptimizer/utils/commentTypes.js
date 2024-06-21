@@ -1,3 +1,2 @@
-
-const commentTypes = ["TODO","FIXME", "DP"];
+const commentTypes = { todo: "TODO", fixme: "FIXME", dp: "DP" };
 export default commentTypes;

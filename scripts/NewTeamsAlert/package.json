@@ -8,11 +8,11 @@
   },
   "type": "module",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "./lib",
   "scripts": {
-    "dev": "nodemon -e ts --exec node --inspect=9239 --signal SIGINT -r ts-node/register ./src/index.ts",
+    "dev": "nodemon -e ts --exec node --inspect=9239 --signal SIGINT -r ts-node/register ./src",
     "build": "tsc --build",
-    "start": "node ./lib/src/index.js",
+    "start": "node ./lib/src",
     "watch": "nodemon --watch ./src -e ts --exec \"npm run start\""
   },
   "repository": {

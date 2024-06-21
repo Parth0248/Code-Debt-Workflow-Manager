@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "extract": "node ./scripts/codeOptimizer",
+    "extract_tasks": "node ./scripts/codeOptimizer",
     "send_alert": "node ./scripts/NewTeamsAlert/src",
-    "create_issue": "node ./scripts/GitLabIssue/"
+    "create_issue": "node ./scripts/GitLabIssue/",
+    "lint": "npx eslint --config ./.eslintrc.cjs --rulesdir ./eslint-plugin-comment-manager/lib/rules/"
   },
   "type": "module",
   "keywords": [],
@@ -19,8 +20,18 @@
     "p-limit": "^5.0.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.3",
+    "globals": "^15.6.0",
     "nodemon": "^3.1.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.13.1"
+  },
+  "eslintConfig": {
+    "resolvePluginsRelativeTo": ".",
+    "validate-comment-tags": ".eslintrc.cjs"
   }
 }

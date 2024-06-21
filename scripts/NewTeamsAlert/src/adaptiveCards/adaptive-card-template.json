@@ -18,7 +18,7 @@
           "type": "TextBlock",
           "text": "${alertMessage}",
           "weight": "Bolder",
-          "size": "extraLarge",
+          "size": "large",
           "color": "${alertColor}",
           "wrap": true,
           "spacing": "small"
@@ -27,7 +27,7 @@
           "type": "TextBlock",
           "text": "${type}: ${title}",
           "weight": "Bolder",
-          "size": "Large",
+          "size": "medium",
           "wrap": true,
           "spacing": "small"
         },
@@ -36,7 +36,7 @@
           "text": "File: ${shortFilePath}",
           "weight": "Bolder",
           "color": "Accent",
-          "size": "medium",
+          "size": "small",
           "wrap": true,
           "tooltip": "Click to open file",
           "spacing": "small"
@@ -93,41 +93,8 @@
                   "actions": [
                     {
                       "type": "Action.OpenUrl",
-                      "url": "vscode://file/${file}",
-                      "title": "Open in Editor"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Column",
-              "width": "auto",
-              "items": [
-                {
-                  "type": "Input.ChoiceSet",
-                  "id": "codeEditor",
-                  "placeholder": "Select Code Editor",
-                  "choices": [
-                    {
-                      "title": "VS Code",
-                      "value": "vscode"
-                    },
-                    {
-                      "title": "Sublime Text",
-                      "value": "sublime"
-                    },
-                    {
-                      "title": "Atom",
-                      "value": "atom"
-                    },
-                    {
-                      "title": "Notepad++",
-                      "value": "notepad++"
-                    },
-                    {
-                      "title": "IntelliJ",
-                      "value": "intellij"
+                      "title": "Open in Editor",
+                      "url": "vscode://file/${file}"
                     }
                   ]
                 }
@@ -145,7 +112,7 @@
         "type": "mention",
         "text": "<at>${username}</at>",
         "mentioned": {
-          "id": "abc@gmail.com",
+          "id": "abhishek.thakur@sprinklr.com",
           "name": "${username}"
         }
       }

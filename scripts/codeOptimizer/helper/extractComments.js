@@ -5,6 +5,8 @@
 //
 
 import REGEX_MAP from "../utils/commentRegex.js";
+const DELIMITER = '#%';
+
 // extract comments from the content with matching regex
 const extractComments = (content) => {
   const comments = []; // Initialize comments array
@@ -25,6 +27,7 @@ const extractComments = (content) => {
     }
   }
 
-  return comments.join("\n");
-};
+  return comments.join(DELIMITER);
+}
+
 export default extractComments;

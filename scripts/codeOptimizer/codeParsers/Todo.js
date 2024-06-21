@@ -1,47 +1,49 @@
 import REGEX_MAP from "../utils/commentRegex.js";
 import { generateUniqueId } from "../utils/generateUniqueId.js";
-import getCommentType from "../helper/getCommentType.js";
 import commentTypes from "../utils/commentTypes.js";
+import { forEach } from "async";
+
+const TYPE = commentTypes.todo;
+const SINGLE_LINE_REGEX = REGEX_MAP[TYPE].regex; // format
+const MULTI_LINE_REGEX = REGEX_MAP[TYPE].multiLineRegex;
+const MULTI_LINE_STAR_REGEX = REGEX_MAP[TYPE].multiLineStarRegex; // format
+const DELIMITER = "#%";
 
 const extractTODO = (content, fullPath) => {
-  const type = commentTypes[0];
-  const regex = REGEX_MAP[type].regex;
-  const multiLineRegex = REGEX_MAP[type].multiLineRegex;
-  const multiLineStarRegex = REGEX_MAP[type].multiLineStarRegex;
+  let comments = [];
 
-  const comments = []; // Initialize comments array
+  const commentEntries = content.split(DELIMITER); // Split content by delimiter
 
-  // Check for single line, multi line and multi line with star comments
-  for (const re of [regex, multiLineRegex, multiLineStarRegex]) {
-    
-    const match = re.exec(content);
-    if (match === null) continue;
-    
-    // obtain the full path of the file using
-    const id = generateUniqueId(match[0], fullPath, match[1], match[2]);
-    const [day, month, year] = match[2].split("-"); // Assuming DD-MM-YYYY format
-    const dateObj = new Date(`${year}-${month}-${day}`);
-    const epochDate = dateObj.getTime(); // Epoch time in milliseconds
+  const regexArray = [
+    SINGLE_LINE_REGEX,
+    MULTI_LINE_REGEX,
+    MULTI_LINE_STAR_REGEX,
+  ];
+  commentEntries.forEach((entry) => {
+    for (const re of regexArray) {
+      const match = re.exec(entry);
+      if (match !== null) {
+        const id = generateUniqueId(match[0], fullPath, match[1], match[2]);
+        const [day, month, year] = match[2].split("-"); // Assuming DD-MM-YYYY format
+        const dateObj = new Date(`${year}-${month}-${day}`);
+        const epochDate = dateObj.getTime(); // Epoch time in milliseconds
 
-    // Get current timestamp in epoch format
-    const currentDate = new Date().getTime();
+        comments.push({
+          id: id,
+          type: TYPE,
+          username: match[1],
+          date: epochDate,
+          days: match[3],
+          title: match[4].trim(),
+          message: match[5]?.trim() || "",
+          file: fullPath,
+        });
 
-    comments.push({
-      id: id,
-      type: type,
-      username: match[1],
-      date: epochDate,
-      days: match[3],
-      title: match[4].trim(),
-      message: match[5]?.trim() || "",
-      file: fullPath,
-      // line: content.substr(0, match.index).split("\n").length,
-      created_at: currentDate, // Add the created_at field
-    });
-
-    // Move the index to avoid infinite loop
-    content = content.slice(match.index + match[0].length);
-  }
+        break; // Exit the loop if a match is found
+      }
+    }
+  });
+  console.log(fullPath, comments);
   return comments;
 };
 
