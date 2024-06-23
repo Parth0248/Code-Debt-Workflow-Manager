@@ -13,7 +13,6 @@ configDotenv(); // Load environment variables from .env file
 const ACCESS_TOKEN = process.env.GITLAB_PROJECT_ACCESS_TOKEN;
 const PROJECT_ID = process.env.GITLAB_PROJECT_ID;
 
-
 try {
   // fetch the project members and store them in a file
   getGitLabProjectMembers(ACCESS_TOKEN, PROJECT_ID);
@@ -29,11 +28,8 @@ try {
 
   // Create the new issues in the project CURRENTLY TESTING FOR 1 issue
   createGitLabIssue(newIssues[0], ACCESS_TOKEN, PROJECT_ID);
-
-
 } catch (err) {
   console.error("Error fetching projects: ", err);
 }
-
 
 // const command = "curl --header PRIVATE-TOKEN: " + GITLAB_PROJECT_ACCESS_TOKEN + "https://"

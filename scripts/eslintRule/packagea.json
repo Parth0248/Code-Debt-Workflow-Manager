@@ -2,17 +2,12 @@
   "name": "eslint-plugin-comment-manager",
   "version": "0.0.0",
   "description": "Lint Rules for comments with Tags",
-  "keywords": [
-    "eslint",
-    "eslintplugin",
-    "eslint-plugin"
-  ],
+  "keywords": ["eslint", "eslintplugin", "eslint-plugin"],
   "author": "Parth Maradia",
   "main": "./lib/index.js",
   "exports": "./lib/index.js",
-  "files": [
-    "lib"
-  ],
+  "type": "module",
+  "files": ["lib"],
   "scripts": {
     "lint": "npm-run-all \"lint:*\"",
     "lint:eslint-docs": "npm-run-all \"update:eslint-docs -- --check\"",

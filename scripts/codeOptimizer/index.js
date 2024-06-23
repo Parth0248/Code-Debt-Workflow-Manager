@@ -1,19 +1,18 @@
 import getCommentsFromDirectory from "./codeParsers/index.js";
 import generateReport from "./report/generateReport.js";
-import absolutePath from "./helper/getAbsPath.js";
+import getAbsolutePath from "./helper/getAbsPath.js";
 
-const source_code_path = process.argv[2];
+const sourceCodePath = process.argv[2];
 
-if (!source_code_path) {
+if (!sourceCodePath) {
   console.error("Please provide the path to the source code directory");
   process.exit(1);
 }
-const absPath = absolutePath(source_code_path);
-getCommentsFromDirectory(absPath)
+const absolutePath = getAbsolutePath(sourceCodePath);
+getCommentsFromDirectory(absolutePath)
   .then((result) => {
-    return generateReport(result);
+    generateReport(result);
   })
   .catch((error) => {
     console.error("Error:", error);
   });
-// export { getCommentsFromDirectory, generateReport};
