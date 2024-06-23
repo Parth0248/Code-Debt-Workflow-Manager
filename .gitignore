@@ -1,4 +1,16 @@
-node_modules
-TodoManager
+# data
 scripts/codeOptimizer/data
 scripts/GitLabIssue/data
+
+# dependencies
+node_modules/
+
+# misc
+.env
+.deployment
+.DS_Store
+.vscode
+TodoManager
+
+# build
+lib/

@@ -1,5 +1,5 @@
 import path from "path";
-const absolutePath = (relativePath) => {
+const getAbsolutePath = (relativePath) => {
   return path.resolve(relativePath);
-}
-export default absolutePath;
+};
+export default getAbsolutePath;

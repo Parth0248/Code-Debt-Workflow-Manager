@@ -1,5 +1,3 @@
 {
-  "recommendations": [
-    "TeamsDevApp.ms-teams-vscode-extension"
-  ]
+  "recommendations": ["TeamsDevApp.ms-teams-vscode-extension"]
 }

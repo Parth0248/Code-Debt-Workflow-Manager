@@ -12,10 +12,10 @@ const extractFIXME = (content, fullPath) => {
 
   let match;
   // Check for single line, multi line and multi line with star comments
-  for(const re in [regex, multiLineRegex, multiLineStarRegex]) {
+  for (const re in [regex, multiLineRegex, multiLineStarRegex]) {
     match = re.exec(content);
     if (match === null) continue;
-    
+
     const id = generateUniqueId(match[0], fullPath, match[1], match[2]);
     const [day, month, year] = match[2].split("-"); // Assuming DD-MM-YYYY format
     const dateObj = new Date(`${year}-${month}-${day}`);

@@ -18,25 +18,26 @@ const ALLOWED_FILE_TYPES = [
 
 const getFiles = async (directory) => {
   try {
-    let files = []; 
+    let files = [];
     const filesInDirectory = await fs.promises.readdir(directory);
 
-    for (const file of filesInDirectory) {
+    const filePromises = filesInDirectory.map(async (file) => {
       const filePath = path.join(directory, file);
       const stat = await fs.promises.lstat(filePath);
 
       if (stat.isDirectory()) {
         const subdirectoryFiles = await getFiles(filePath); // Recursively get files from subdirectories
-        files.push(...subdirectoryFiles); 
+        files.push(...subdirectoryFiles);
       } else {
         const fileExtension = path.extname(filePath).toLowerCase();
         if (ALLOWED_FILE_TYPES.includes(fileExtension)) {
           files.push(filePath);
         }
       }
-    }
+    });
+
+    await Promise.all(filePromises);
     return files;
-    
   } catch (error) {
     console.error("Error occurred while fetching files:", error);
     return [];

@@ -5,7 +5,7 @@
 //
 
 import REGEX_MAP from "../utils/commentRegex.js";
-const DELIMITER = '#%';
+const DELIMITER = "#%";
 
 // extract comments from the content with matching regex
 const extractComments = (content) => {
@@ -28,6 +28,6 @@ const extractComments = (content) => {
   }
 
   return comments.join(DELIMITER);
-}
+};
 
 export default extractComments;

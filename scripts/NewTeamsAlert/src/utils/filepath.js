@@ -1,4 +1,3 @@
+const TASKS_FILE_PATH = "./scripts/codeOptimizer/data/todo_new.json";
 
-const TODO_FILE_PATH = "/Users/parth.maradia/Project/Intern Project/Comments-Manager/scripts/codeOptimizer/data/todo_new.json"
-
-export { TODO_FILE_PATH }
+export { TASKS_FILE_PATH };

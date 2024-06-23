@@ -8,6 +8,6 @@ const getIssuesData = (filePath) => {
     console.error("Error reading file:", err);
     return null;
   }
-}
+};
 
 export default getIssuesData;

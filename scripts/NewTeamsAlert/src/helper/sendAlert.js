@@ -1,8 +1,8 @@
 // Function to send adaptive cards
 import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from .env file
-
-import template from "../adaptiveCards/adaptive-card-template.json" assert { type: "json" };
+// import * as template from "../adaptiveCards/adaptive-card-template.json";
+import template from "../adaptiveCards/adaptive-card-template.json" assert { type: "json" }; // Assert used for type check [Node requirement]
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
 import WebhookTarget from "../webhookTarget.js";
 import updatePendingTasks from "./updatePendingTasks.js";
@@ -19,12 +19,12 @@ if (!webhookUrl) {
 const webhookTarget = new WebhookTarget(new URL(webhookUrl));
 
 const sendAlert = async (tasks) => {
-  const pendingTaskCount = new Map();
+  const pendingTasks = new Map();
 
-  pendingTask(pendingTaskCount, tasks);
+  pendingTask(pendingTasks, tasks);
 
   const task = tasks[0]; // CHANGE THIS TO A LOOP TO SEND ALERT FOR ALL TASKS
-  sendAlertForTask(task, pendingTaskCount);
+  sendAlertForTask(task, pendingTasks);
 };
 
 const sendAlertForTask = async (task, pendingTaskCount) => {
@@ -50,11 +50,10 @@ const sendAlertForTask = async (task, pendingTaskCount) => {
 
     // adds max 3 pending tasks to the card to make the Card look less cluttered
     const updatedCardTemplate = updatePendingTasks(cardTemplate, pendingTasks);
-  
+
     await webhookTarget.sendAdaptiveCard(
-      AdaptiveCards.declare(updatedCardTemplate).render(modifiedTask)
+      AdaptiveCards.declare(updatedCardTemplate).render(modifiedTask),
     );
-    console.log("Sent adaptive card successfully.");
   } catch (e) {
     console.log(`Failed to send adaptive card. ${e}`);
   }

@@ -33,18 +33,19 @@ module.exports = {
     },
   ],
   settings: {
-    react: {
-      version: "detect",
-    },
+    // react: {
+    //   version: "detect",
+    // },
   },
   rules: {
     // add custom rules here
+    // "validate-comment-tags": ["error"], // Enable custom rule
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "react/no-unescaped-entities": "off",
     "@typescript-eslint/no-var-requires": "off",
+    "no-undef": "off",
     semi: ["off", "always"],
-    // "validate-comment-tags": ["error"], // Enable custom rule
   },
 };
