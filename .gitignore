@@ -1,9 +1,12 @@
 # data
-scripts/codeOptimizer/data
-scripts/GitLabIssue/data
+data/
 
 # dependencies
 node_modules/
+
+# package
+package.json
+
 
 # misc
 .env
@@ -11,6 +14,3 @@ node_modules/
 .DS_Store
 .vscode
 TodoManager
-
-# build
-lib/

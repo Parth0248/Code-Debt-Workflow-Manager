@@ -1,13 +1,11 @@
 import REGEX_MAP from "../utils/commentRegex.js";
 import { generateUniqueId } from "../utils/generateUniqueId.js";
 import commentTypes from "../utils/commentTypes.js";
-import { forEach } from "async";
 
 const TYPE = commentTypes.todo;
 const SINGLE_LINE_REGEX = REGEX_MAP[TYPE].regex; // format
 const MULTI_LINE_REGEX = REGEX_MAP[TYPE].multiLineRegex;
 const MULTI_LINE_STAR_REGEX = REGEX_MAP[TYPE].multiLineStarRegex; // format
-const DELIMITER = "#%";
 
 const processEntry = async (
   entry,
@@ -57,7 +55,7 @@ const processEntries = async (
 
 const extractTODO = async (content, fullPath) => {
   const comments = [];
-  const commentEntries = content.split(DELIMITER); // Split content by delimiter
+  const commentEntries = content; 
 
   const regexArray = [
     SINGLE_LINE_REGEX,

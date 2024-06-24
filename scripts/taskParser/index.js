@@ -1,4 +1,4 @@
-import getCommentsFromDirectory from "./codeParsers/index.js";
+import getCommentsFromDirectory from "./parsers/index.js";
 import generateReport from "./report/generateReport.js";
 import getAbsolutePath from "./helper/getAbsPath.js";
 

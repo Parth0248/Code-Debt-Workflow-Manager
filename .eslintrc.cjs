@@ -39,7 +39,7 @@ module.exports = {
   },
   rules: {
     // add custom rules here
-    // "validate-comment-tags": ["error"], // Enable custom rule
+    // "validate-comment-tags": "error", // Enable custom rule
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "@typescript-eslint/no-unused-vars": "off",

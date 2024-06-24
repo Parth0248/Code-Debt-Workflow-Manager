@@ -17,7 +17,7 @@ try {
   // fetch the project members and store them in a file
   getGitLabProjectMembers(ACCESS_TOKEN, PROJECT_ID);
 
-  // fetch the issues from Comments-Manager/scripts/codeOptimizer/data/todo_new.json and store them in issueData
+  // fetch the issues from data/ directory and store them in issueData
   const issueData = await getIssuesData(ISSUE_DATA_PATH);
 
   // Fetch the Issues from GitLab and store them in currentGitLabIssues
@@ -32,4 +32,3 @@ try {
   console.error("Error fetching projects: ", err);
 }
 
-// const command = "curl --header PRIVATE-TOKEN: " + GITLAB_PROJECT_ACCESS_TOKEN + "https://"

@@ -1,5 +1,5 @@
 import { TASKS_FILE_PATH } from "./utils/filepath.js";
-import sendAlert from "../src/helper/sendAlert.js";
+import sendAlert from "./helper/sendAlert.js";
 import fs from "fs";
 
 // Read JSON file

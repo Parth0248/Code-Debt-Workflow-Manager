@@ -1,12 +1,12 @@
 import fs from "fs";
-import path from "path";
+
 import { todo_new_path, todo_old_path } from "./filepath.js";
 
 import ensureDirectoryExistence from "./ensureDirectory.js";
 
 import saveCommentsToFile from "./saveComment.js";
 
-const generateReport = async (comments) => {
+const generateReport = (comments) => {
   try {
     if (!fs.existsSync(todo_old_path) && !fs.existsSync(todo_new_path)) {
       ensureDirectoryExistence(todo_old_path);
