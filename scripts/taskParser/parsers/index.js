@@ -19,7 +19,7 @@ const getCommentsFromDirectory = async (directory) => {
   const taskList = [];
 
   // Since extract function is async, we need to use for..of loop to wait for the function to complete
-  for (const [filePath, fileComments] of comments.entries()) {
+  for (const [filePath, fileComments] of Object.entries(comments)) {
     for (const { name, extract } of extractors) {
       const extractedComments = await extract(fileComments, filePath);
       if (extractedComments.length > 0) {
@@ -27,6 +27,7 @@ const getCommentsFromDirectory = async (directory) => {
       }
     }
   }
+
   return taskList;
 };
 

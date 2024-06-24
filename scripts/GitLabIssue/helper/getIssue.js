@@ -2,7 +2,7 @@ import axios from "axios";
 import fs from "fs";
 import path from "path";
 
-import commentTypes from "../../codeOptimizer/utils/commentTypes.js";
+import commentTypes from "../../taskParser/utils/commentTypes.js";
 
 import storeIssue from "./storeIssue.js";
 
@@ -28,7 +28,7 @@ async function getGitLabIssues(ACCESS_TOKEN, PROJECT_ID) {
   } catch (error) {
     console.error(
       "Error fetching issues:",
-      error.response ? error.response.data : error.message,
+      error.response ? error.response.data : error.message
     );
   }
 }

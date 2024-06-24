@@ -37,6 +37,7 @@ const getFiles = async (directory) => {
     });
 
     await Promise.all(filePromises);
+    
     return files;
   } catch (error) {
     console.error("Error occurred while fetching files:", error);

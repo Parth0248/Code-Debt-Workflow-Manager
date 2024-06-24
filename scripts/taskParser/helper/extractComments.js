@@ -16,18 +16,17 @@ const extractComments = (content) => {
     const multiLineRegex = REGEX_MAP[type].multiLineRegex;
     const multiLineStarRegex = REGEX_MAP[type].multiLineStarRegex;
 
-    let match;
-    // Check for single line, multi line and multi line with star comments
-    while (
-      (match = regex.exec(content)) !== null ||
-      (match = multiLineRegex.exec(content)) !== null ||
-      (match = multiLineStarRegex.exec(content)) !== null
-    ) {
+    const RE_LIST = [regex, multiLineRegex, multiLineStarRegex];
+    for (const re of RE_LIST) {
+      const match = re.exec(content);
+      if (match === null) {
+        continue;
+      }
       comments.push(match[0]);
     }
-  }
 
-  return comments.join(DELIMITER);
+  }
+  return comments;
 };
 
 export default extractComments;

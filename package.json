@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "extract_tasks": "node ./scripts/codeOptimizer",
-    "send_alert": "node ./scripts/NewTeamsAlert/src",
+    "extract_tasks": "node ./scripts/taskParser",
+    "send_alert": "node ./scripts/teamsAlert/",
     "create_issue": "node ./scripts/GitLabIssue/",
-    "lint": "npx eslint --config ./.eslintrc.cjs --rulesdir scripts/eslintRule/lib/rules/",
+    "lint": "npx eslint --config ./.eslintrc.cjs --rulesdir scripts/eslintRule/",
     "prettier": "prettier --write ."
   },
   "type": "module",
@@ -19,6 +19,7 @@
     "async": "^3.2.5",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
+    "lodash": "^4.17.21",
     "p-limit": "^5.0.0",
     "prettier": "^3.3.2"
   },

@@ -2,7 +2,7 @@
 import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from .env file
 // import * as template from "../adaptiveCards/adaptive-card-template.json";
-import template from "../adaptiveCards/adaptive-card-template.json" assert { type: "json" }; // Assert used for type check [Node requirement]
+import template from "../adaptiveCards/adaptive-card-template.json" ; // Assert used for type check [Node requirement]
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
 import WebhookTarget from "../webhookTarget.js";
 import updatePendingTasks from "./updatePendingTasks.js";
