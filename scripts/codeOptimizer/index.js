@@ -2,7 +2,7 @@ import getCommentsFromDirectory from "./codeParsers/index.js";
 import generateReport from "./report/generateReport.js";
 import getAbsolutePath from "./helper/getAbsPath.js";
 
-const sourceCodePath = process.argv[2];
+const sourceCodePath = process.argv[2]; 
 
 if (!sourceCodePath) {
   console.error("Please provide the path to the source code directory");

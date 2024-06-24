@@ -2,7 +2,6 @@
 //
 // @param {string} content - The content to be checked
 // @returns {Array} - The comments in the content
-//
 
 import REGEX_MAP from "../utils/commentRegex.js";
 const DELIMITER = "#%";
@@ -25,6 +24,17 @@ const extractComments = (content) => {
     ) {
       comments.push(match[0]);
     }
+
+    const d=[regex,multiLineRegex,multiLineStarRegex]
+
+    // while(true){
+    //   for(r of d){
+    //      const a=r.exec(content);
+    //      if(a){
+    //         comments.push(a[0]);
+    //         continue;
+    //   }
+    // }
   }
 
   return comments.join(DELIMITER);
