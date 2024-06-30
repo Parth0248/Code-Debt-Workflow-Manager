@@ -1,9 +1,8 @@
 import axios from "axios";
 import fs from "fs";
 import path from "path";
-
-import commentTypes from "../../taskParser/utils/commentTypes.js";
-
+import config from "../../configs/config.js";
+const commentTypes = config.TASK_TYPE;
 import storeIssue from "./storeIssue.js";
 
 async function getGitLabIssues(ACCESS_TOKEN, PROJECT_ID) {
@@ -18,17 +17,17 @@ async function getGitLabIssues(ACCESS_TOKEN, PROJECT_ID) {
     });
 
     const filteredIssues = response.data.filter((issue) => {
-      const label = issue.labels.toLowerCase();
+      const label = issue.labels;
       return commentTypes.some((type) => label.includes(type.toUpperCase()));
     });
 
-    storeIssue(response.data);
+    storeIssue(filteredIssues);
 
-    return response.data;
+    return filteredIssues;
   } catch (error) {
     console.error(
       "Error fetching issues:",
-      error.response ? error.response.data : error.message
+      error.response ? error.response.data : error.message,
     );
   }
 }

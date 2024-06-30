@@ -1,18 +1,31 @@
 import { generateUniqueId } from "../utils/generateUniqueId.js";
-import TodoPattern from "../syntax/todoPattern.js";
+import DpPattern from "../syntax/dpPattern.js";
 
-const todoPattern = new TodoPattern();
-const TYPE = todoPattern.type;
-const regexArray = Object.values(todoPattern.getParserPatterns());
+const dpPattern = new DpPattern();
+const TYPE = dpPattern.type;
+const regexArray = Object.values(dpPattern.getParserPatterns());
+
+const getDays = (duration) => {
+  const number = duration.split(/(?=[A-Z])/)[0];
+  const unit = duration.slice(-1);
+  if (unit === "W") {
+    return String(number * 7);
+  } else if (unit === "M") {
+    return String(number * 30);
+  } else if (unit === "D") {
+    return String(number);
+  }
+};
 
 const processEntry = async (entry, fullPath, generateUniqueId, TYPE) => {
   for (const regexPattern of regexArray) {
     const match = regexPattern.exec(entry);
     if (match) {
       const userName = match[1];
-      const days = match[3];
-      const title = match[4].replace(/^\s*\*+/gm, "").trim();
-      const message = match[5]?.replace(/^\s*\*+/gm, "").trim() || "";
+      const days = getDays(match[3]); // Days is in format <days><W|M|D>
+      const category = match[4];
+      const title = match[5].replace(/^\s*\*+/gm, "").trim();
+      const message = match[6]?.replace(/^\s*\*+/gm, "").trim() || "";
 
       const id = generateUniqueId(TYPE, userName, title);
 
@@ -28,6 +41,7 @@ const processEntry = async (entry, fullPath, generateUniqueId, TYPE) => {
         days: days,
         title: title,
         message: message,
+        category: category,
         file: fullPath,
       };
     }

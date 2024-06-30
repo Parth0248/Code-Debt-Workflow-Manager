@@ -9,7 +9,7 @@
       "items": [
         {
           "type": "TextBlock",
-          "text": "Hi <at>${username}</at>",
+          "text": "Hi <at>${userName}</at>",
           "weight": "Bolder",
           "size": "medium",
           "wrap": true
@@ -110,10 +110,10 @@
     "entities": [
       {
         "type": "mention",
-        "text": "<at>${username}</at>",
+        "text": "<at>${userName}</at>",
         "mentioned": {
-          "id": "abhishek.thakur@sprinklr.com",
-          "name": "${username}"
+          "id": "${userEmail}",
+          "name": "${userName}"
         }
       }
     ]

@@ -23,7 +23,7 @@ async function getGitLabProjectMembers(ACCESS_TOKEN, PROJECT_ID) {
       name: member.name,
       id: member.id,
     }));
-  
+
     // Store the members in a file
     fs.writeFileSync(
       path.join(__dirname, ASSIGNEE_ID_PATH),

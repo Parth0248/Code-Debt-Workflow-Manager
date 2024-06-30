@@ -11,5 +11,4 @@ To run the custom comment parser and store the data in `todo_new.json`, follow t
    cd Comment-Manager
    ```
 
-
 [Dry Run](https://sprinklr-my.sharepoint.com/:v:/p/parth_maradia/EZZ-oLe5IgNDmpNc_BoG37ABlDaj439fD__p1Z6U-ednMQ?e=tn9Twe)

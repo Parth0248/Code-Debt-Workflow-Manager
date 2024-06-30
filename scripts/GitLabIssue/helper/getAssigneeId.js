@@ -8,10 +8,14 @@ const getAssigneeID = (username) => {
   const assigneeData = fs.readFileSync(path.join(__dirname, ASSIGNEE_ID_PATH));
 
   const assignees = JSON.parse(assigneeData);
-  const assignee = assignees.find(
-    (assignee) => assignee.username.toLowerCase() === username.toLowerCase(),
-  );
 
+  const assignee = assignees.find(
+    (assignee) => assignee.name.toLowerCase() === username.toLowerCase(),
+  );
+  if (!assignee) {
+    console.log("Assignee not found for ", username);
+    return;
+  }
   return assignee.id;
 };
 

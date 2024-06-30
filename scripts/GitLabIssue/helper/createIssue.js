@@ -13,15 +13,20 @@ async function createGitLabIssue(issueData, ACCESS_TOKEN, PROJECT_ID) {
 
   // find the assignee ID from the members file
 
-  const assignee_id = getAssigneeID(issueData.username);
+  const assignee_id = getAssigneeID(issueData.username.split(".").join(" "));
   if (!assignee_id) {
-    console.error("Assignee not found");
+    // console.log("Assignee not found for ", issueData.username);
     return;
   }
+  // attach url to description like done in HTML format
+  const description =
+    issueData.message +
+    "  \nFile: " +
+    issueData.file.split("/").slice(-4).join("/");
 
   const loadData = {
     title: issueData.title,
-    description: issueData.message,
+    description: description,
     labels: [issueData.type],
     due_date: formattedDate,
     assignee_id: assignee_id,
@@ -35,10 +40,12 @@ async function createGitLabIssue(issueData, ACCESS_TOKEN, PROJECT_ID) {
       },
     });
     console.log(`Issue created: ${response.data.web_url}`);
+
+    return response.data;
   } catch (error) {
     console.error(
       "Error creating issue:",
-      error.response ? error.response.data : error.message
+      error.response ? error.response.data : error.message,
     );
   }
 }

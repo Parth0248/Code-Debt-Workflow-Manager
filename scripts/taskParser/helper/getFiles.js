@@ -1,44 +1,42 @@
 // Fetches and returns path of all files in the directory and subdirectories and returns
-//
-// @param {string} directory - The directory to be checked
-// @returns {Array} - The path of all files in the directory and subdirectories
-//
+
 import fs from "fs";
 import path from "path";
+import config from "../../configs/config.js";
 
-const ALLOWED_FILE_TYPES = [
-  ".js",
-  ".mjs",
-  ".ts",
-  ".jsx",
-  ".tsx",
-  ".vue",
-  ".coffee",
-];
+const ALLOWED_FILE_TYPES = config.FILE_TYPE;
+const IGNORED_DIRECTORIES = config.IGNORE_DIR;
 
 const getFiles = async (directory) => {
   try {
-    let files = [];
+    if (IGNORED_DIRECTORIES.includes(path.basename(directory))) {
+      return [];
+    }
+
     const filesInDirectory = await fs.promises.readdir(directory);
 
-    const filePromises = filesInDirectory.map(async (file) => {
+    const files = await filesInDirectory.reduce(async (accPromise, file) => {
+      const acc = await accPromise;
       const filePath = path.join(directory, file);
       const stat = await fs.promises.lstat(filePath);
 
       if (stat.isDirectory()) {
-        const subdirectoryFiles = await getFiles(filePath); // Recursively get files from subdirectories
-        files.push(...subdirectoryFiles);
+        const subDirFiles = await getFiles(filePath); // Recursively get files from subdirectories
+        return acc.concat(subDirFiles);
       } else {
         const fileExtension = path.extname(filePath).toLowerCase();
         if (ALLOWED_FILE_TYPES.includes(fileExtension)) {
-          files.push(filePath);
+          return acc.concat(filePath);
         }
+        return acc;
       }
-    });
+    }, Promise.resolve([]));
 
-    await Promise.all(filePromises);
-    
-    return files;
+    // Filter the files to include only allowed file types
+    return files.filter((file) => {
+      const fileExtension = path.extname(file).toLowerCase();
+      return ALLOWED_FILE_TYPES.includes(fileExtension);
+    });
   } catch (error) {
     console.error("Error occurred while fetching files:", error);
     return [];

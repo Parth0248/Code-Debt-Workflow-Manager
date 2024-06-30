@@ -1,8 +1,7 @@
 // Function to send adaptive cards
 import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from .env file
-// import * as template from "../adaptiveCards/adaptive-card-template.json";
-import template from "../adaptiveCards/adaptive-card-template.json" ; // Assert used for type check [Node requirement]
+import template from "../adaptiveCards/adaptive-card-template.json" assert { type: "json" }; // Assert used for type check [Node requirement]
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
 import WebhookTarget from "../webhookTarget.js";
 import updatePendingTasks from "./updatePendingTasks.js";
@@ -35,9 +34,13 @@ const sendAlertForTask = async (task, pendingTaskCount) => {
 
   try {
     const alertTitle = alertText(task.days);
+    const userEmail = task.username + "@sprinklr.com";
+    const userName = task.username.split(".")[0];
 
     const modifiedTask = {
       ...task,
+      userEmail: userEmail,
+      userName: userName,
       shortFilePath: task.file.split("/").slice(-3).join("/"),
       pendingTasks: pending.length > 0 ? pending.length - 1 : 0,
       alertMessage: alertTitle.text,
@@ -52,8 +55,9 @@ const sendAlertForTask = async (task, pendingTaskCount) => {
     const updatedCardTemplate = updatePendingTasks(cardTemplate, pendingTasks);
 
     await webhookTarget.sendAdaptiveCard(
-      AdaptiveCards.declare(updatedCardTemplate).render(modifiedTask),
+      AdaptiveCards.declare(updatedCardTemplate).render(modifiedTask)
     );
+    // console.log(JSON.stringify(updatedCardTemplate, null, 2 ))
   } catch (e) {
     console.log(`Failed to send adaptive card. ${e}`);
   }

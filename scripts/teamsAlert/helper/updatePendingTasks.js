@@ -1,22 +1,33 @@
+import update from 'immutability-helper';
+
 const updatePendingTasks = (cardTemplate, pendingTasks) => {
   const target = "Container";
-  const pendingTaskContent = pendingTasks
-    .slice(0, 3)
-    .map((t) => `- ${t}`)
-    .join("\n");
-  cardTemplate.body = cardTemplate.body.map((item) => {
+  const pendingTaskContent = pendingTasks.map((t) => `- ${t}`).join("\n");
+
+  const updatedBody = cardTemplate.body.map((item, index) => {
     if (item.type === target && item.items) {
-      item.items = item.items.map((subItem) => {
+      const updatedItems = item.items.map((subItem, subIndex) => {
         if (subItem.type === target) {
-          subItem.items[1].text = pendingTaskContent;
+          return update(subItem, {
+            items: {
+              1: {
+                text: { $set: pendingTaskContent }
+              }
+            }
+          });
         }
         return subItem;
+      });
+      return update(item, {
+        items: { $set: updatedItems }
       });
     }
     return item;
   });
 
-  return cardTemplate;
+  return update(cardTemplate, {
+    body: { $set: updatedBody }
+  });
 };
 
 export default updatePendingTasks;
