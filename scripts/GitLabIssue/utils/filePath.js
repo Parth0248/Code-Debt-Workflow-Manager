@@ -1,5 +1,8 @@
-const ISSUES_FILE_PATH = "./data/issues_old.json";
-const ISSUE_DATA_PATH = "./data/todo_new.json";
-const ASSIGNEE_ID_PATH = "./data/assigneeID.json";
+import config from "../../configs/config.js";
 
-export { ISSUES_FILE_PATH, ISSUE_DATA_PATH, ASSIGNEE_ID_PATH };
+const GITLAB_ISSUE_PATH = config.OUTPUT_DIR + "/oldGitIssues.json";
+const NEW_TASKS_PATH = config.OUTPUT_DIR + "/new_tasks.json";
+const ASSIGNEE_ID_PATH = config.OUTPUT_DIR + "/assigneeID.json";
+const OLD_TASKS_PATH = config.OUTPUT_DIR + "/.old_tasks.json";
+
+export { GITLAB_ISSUE_PATH, NEW_TASKS_PATH, ASSIGNEE_ID_PATH, OLD_TASKS_PATH };

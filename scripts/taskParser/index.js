@@ -1,18 +1,16 @@
-import getCommentsFromDirectory from "./parsers/index.js";
-import generateReport from "./report/generateReport.js";
+import fetchComments from "./parsers/index.js";
+import generateReport from "./reporting/generateReport.js";
 import getAbsolutePath from "./helper/getAbsPath.js";
+import config from "../configs/config.js";
 
-const sourceCodePath = process.argv[2];
+const sourceCodePath = config.SRC_DIR;
 
-if (!sourceCodePath) {
-  console.error("Please provide the path to the source code directory");
-  process.exit(1);
-}
-const absolutePath = getAbsolutePath(sourceCodePath);
-getCommentsFromDirectory(absolutePath)
-  .then((result) => {
-    generateReport(result);
-  })
-  .catch((error) => {
+(async () => {
+  try {
+    const absolutePath = getAbsolutePath(sourceCodePath);
+    const codeCommentList = await fetchComments(absolutePath); // waits till all comments are fetched and processed
+    generateReport(codeCommentList);
+  } catch (error) {
     console.error("Error:", error);
-  });
+  }
+})(sourceCodePath);

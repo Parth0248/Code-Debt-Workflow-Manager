@@ -1,10 +1,8 @@
-import crypto from "crypto";
+import uuid5 from "uuid5";
 
-// Function to generate a unique ID for each comment
-const generateUniqueId = (content, filePath, username, date) => {
-  const hash = crypto.createHash("sha256");
-  hash.update(content + filePath + username + date);
-  return hash.digest("hex");
+const generateUniqueId = (content, username, date) => {
+  const hash = uuid5(content + username + date, uuid5.URL);
+  return hash;
 };
 
 export { generateUniqueId };

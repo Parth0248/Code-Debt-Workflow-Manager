@@ -9,8 +9,10 @@ package.json
 
 
 # misc
-.env
+.env.config
 .deployment
 .DS_Store
 .vscode
-TodoManager
+
+# testing
+sourceCode/

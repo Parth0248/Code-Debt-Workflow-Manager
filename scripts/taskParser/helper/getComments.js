@@ -47,7 +47,6 @@ const getComments = async (files) => {
     failedFiles.forEach((file) => console.log(file));
   }
 
-  
   return commentsMap;
 };
 

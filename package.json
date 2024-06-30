@@ -5,9 +5,10 @@
   "scripts": {
     "extract_tasks": "node ./scripts/taskParser",
     "send_alert": "node ./scripts/teamsAlert/",
-    "create_issue": "node ./scripts/GitLabIssue/",
-    "lint": "npx eslint --config ./.eslintrc.cjs --rulesdir scripts/eslintRule/",
-    "prettier": "prettier --write ."
+    "create_issue": "node ./scripts/gitLabIssue/",
+    "lint": "npx eslint ./sourceCode",
+    "prettier": "prettier --write .",
+    "master_script": "node ./scripts/"
   },
   "type": "module",
   "keywords": [],
@@ -19,13 +20,17 @@
     "async": "^3.2.5",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
+    "immutability-helper": "^3.1.1",
     "lodash": "^4.17.21",
     "p-limit": "^5.0.0",
-    "prettier": "^3.3.2"
+    "prettier": "^3.3.2",
+    "uuid5": "^1.0.2"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.24.7",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
+    "commander": "^12.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.3",
     "globals": "^15.6.0",
@@ -35,7 +40,6 @@
     "typescript-eslint": "^7.13.1"
   },
   "eslintConfig": {
-    "resolvePluginsRelativeTo": ".",
-    "validate-comment-tags": ".eslintrc.cjs"
+    "resolvePluginsRelativeTo": "."
   }
 }

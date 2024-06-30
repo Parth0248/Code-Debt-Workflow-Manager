@@ -1,46 +1,46 @@
-import REGEX_MAP from "../utils/commentRegex.js";
 import { generateUniqueId } from "../utils/generateUniqueId.js";
-import commentTypes from "../utils/commentTypes.js";
+import FixmePattern from "../syntax/fixmePattern.js";
 
-const extractFIXME = (content, fullPath) => {
-  const type = commentTypes[1]; // "FIXME"
-  const regex = REGEX_MAP[type].regex;
-  const multiLineRegex = REGEX_MAP[type].multiLineRegex;
-  const multiLineStarRegex = REGEX_MAP[type].multiLineStarRegex;
+const fixmePattern = new FixmePattern();
+const TYPE = fixmePattern.type;
+const regexArray = Object.values(fixmePattern.getParserPatterns());
 
-  const comments = []; // Initialize comments array
+const processEntry = async (entry, fullPath, generateUniqueId, TYPE) => {
+  for (const regexPattern of regexArray) {
+    const match = regexPattern.exec(entry);
+    if (match) {
+      const userName = match[1];
+      const days = match[3];
+      const title = match[4].replace(/^\s*\*+/gm, "").trim();
+      const message = match[5]?.replace(/^\s*\*+/gm, "").trim() || "";
+      const id = generateUniqueId(TYPE, userName, title);
 
-  let match;
-  // Check for single line, multi line and multi line with star comments
-  for (const re in [regex, multiLineRegex, multiLineStarRegex]) {
-    match = re.exec(content);
-    if (match === null) continue;
+      const [day, month, year] = match[2].split("-");
+      const dateObj = new Date(`${year}-${month}-${day}`);
+      const epochDate = dateObj.getTime();
 
-    const id = generateUniqueId(match[0], fullPath, match[1], match[2]);
-    const [day, month, year] = match[2].split("-"); // Assuming DD-MM-YYYY format
-    const dateObj = new Date(`${year}-${month}-${day}`);
-    const epochDate = dateObj.getTime(); // Epoch time in milliseconds
-
-    // Get current timestamp in epoch format
-    const currentDate = new Date().getTime();
-
-    comments.push({
-      id: id,
-      type: type,
-      username: match[1],
-      date: epochDate,
-      days: match[3],
-      title: match[4].trim(),
-      message: match[5]?.trim() || "",
-      file: fullPath,
-      // line: content.substr(0, match.index).split("\n").length,
-      created_at: currentDate, // Add the created_at field
-    });
-
-    // Move the index to avoid infinite loop
-    content = content.slice(match.index + match[0].length);
+      return {
+        id: id,
+        type: TYPE,
+        username: userName,
+        date: epochDate,
+        days: days,
+        title: title,
+        message: message,
+        file: fullPath,
+      };
+    }
   }
+  return null;
+};
 
+const extractFIXME = async (content, fullPath) => {
+  const promises = content.map((entry) =>
+    processEntry(entry, fullPath, generateUniqueId, TYPE),
+  );
+  const results = await Promise.all(promises);
+
+  const comments = results.filter((result) => result !== null);
   return comments;
 };
 

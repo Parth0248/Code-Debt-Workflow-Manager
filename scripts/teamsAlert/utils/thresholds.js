@@ -4,53 +4,64 @@ const alertColor = {
   green: "good",
 };
 
+const thresholdDays = {
+  critical: -7,
+  overdue: -1,
+  finalDay: 0,
+  oneDay: 1,
+  finalWeek: 7,
+  finalTwoWeeks: 14,
+  finalMonth: 30,
+  finalTwoMonths: 60,
+};
+
 const pluralize = (count) => (count === 1 ? "day" : "days");
 
 const thresholds = [
   {
     min: -Infinity,
-    max: -7,
+    max: thresholdDays.critical,
     text: (days) =>
       `Critical! Task overdue by ${Math.abs(days)} ${pluralize(Math.abs(days))}. Immediate attention needed.`,
     color: alertColor.red,
   },
   {
-    min: -7,
-    max: -1,
+    min: thresholdDays.critical,
+    max: thresholdDays.overdue,
     text: (days) =>
       `You missed the deadline by ${Math.abs(days)} ${pluralize(Math.abs(days))}.`,
     color: alertColor.red,
   },
   {
-    min: 0,
-    max: 0,
+    min: thresholdDays.finalDay,
+    max: thresholdDays.finalDay,
     text: () => `Today's the day! Deadline is here.`,
     color: alertColor.red,
   },
   {
-    min: 1,
-    max: 7,
+    min: thresholdDays.oneDay,
+    max: thresholdDays.finalWeek,
     text: (days) =>
       `Final week! Just ${days} ${pluralize(days)} left to complete your task.`,
     color: alertColor.orange,
   },
   {
-    min: 8,
-    max: 15,
+    min: thresholdDays.finalWeek + 1,
+    max: thresholdDays.finalTwoWeeks + 1,
     text: (days) =>
       `Time is ticking! Only ${days} ${pluralize(days)} left to finish your task.`,
     color: alertColor.green,
   },
   {
-    min: 16,
-    max: 30,
+    min: thresholdDays.finalTwoWeeks + 2,
+    max: thresholdDays.finalMonth,
     text: (days) =>
       `Halfway through the month. ${days} ${pluralize(days)} left to meet your deadline.`,
     color: alertColor.green,
   },
   {
-    min: 31,
-    max: 40,
+    min: thresholdDays.finalMonth + 1,
+    max: thresholdDays.finalTwoMonths,
     text: (days) =>
       `Plenty of time left. ${days} ${pluralize(days)} left to plan and finish your task.`,
     color: alertColor.green,
