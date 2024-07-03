@@ -19,8 +19,7 @@ try {
 
   // fetch the issues from data/ directory and store them in issueData
   const issueData = await getIssuesData(NEW_TASKS_PATH);
-  // console.log(issueData);
-
+  
   // Fetch the Issues from GitLab and store them in currentGitLabIssues
   const currentGitLabIssues = await getGitLabIssue(ACCESS_TOKEN, PROJECT_ID);
 

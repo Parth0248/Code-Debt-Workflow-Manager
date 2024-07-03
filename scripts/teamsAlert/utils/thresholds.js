@@ -1,18 +1,8 @@
+import thresholdDays from "./thresholdDays.js";
 const alertColor = {
   red: "attention",
   orange: "warning",
-  green: "good",
-};
-
-const thresholdDays = {
-  critical: -7,
-  overdue: -1,
-  finalDay: 0,
-  oneDay: 1,
-  finalWeek: 7,
-  finalTwoWeeks: 14,
-  finalMonth: 30,
-  finalTwoMonths: 60,
+  green: "warning",
 };
 
 const pluralize = (count) => (count === 1 ? "day" : "days");
@@ -43,7 +33,7 @@ const thresholds = [
     max: thresholdDays.finalWeek,
     text: (days) =>
       `Final week! Just ${days} ${pluralize(days)} left to complete your task.`,
-    color: alertColor.orange,
+    color: alertColor.red,
   },
   {
     min: thresholdDays.finalWeek + 1,
@@ -68,3 +58,4 @@ const thresholds = [
   },
 ];
 export default thresholds;
+  

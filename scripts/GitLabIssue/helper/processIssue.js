@@ -21,7 +21,7 @@ const processIssue = (issueData, currentGitLabIssues) => {
     // Update the existing issues with the GitLabId
     const updatedIssueData = updateExistingIssue(
       cleanIssueData,
-      formattedGitLabIssues
+      formattedGitLabIssues,
     );
     // Find the new issues which dont contain GitLabId in the updatedIssueData
     const newIssues = updatedIssueData.filter((issue) => {

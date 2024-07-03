@@ -25,6 +25,16 @@
         },
         {
           "type": "TextBlock",
+          "text": "File: ${shortFilePath}",
+          "weight": "Bolder",
+          "color": "Accent",
+          "size": "medium",
+          "wrap": true,
+          "tooltip": "Click to open file",
+          "spacing": "small"
+        },
+        {
+          "type": "TextBlock",
           "text": "${type}: ${title}",
           "weight": "Bolder",
           "size": "medium",
@@ -33,24 +43,15 @@
         },
         {
           "type": "TextBlock",
-          "text": "File: ${shortFilePath}",
-          "weight": "Bolder",
-          "color": "Accent",
-          "size": "small",
-          "wrap": true,
-          "tooltip": "Click to open file",
-          "spacing": "small"
-        },
-        {
-          "type": "TextBlock",
           "text": "${message}",
           "wrap": true,
-          "size": "large",
+          "size": "medium",
+          "isRichText": true,
           "spacing": "medium"
         },
         {
           "type": "TextBlock",
-          "text": "You have ${pendingTasks} tasks left!",
+          "text": "You have ${pendingTasks} pending tasks left in this file!",
           "wrap": true,
           "weight": "bolder",
           "size": "medium",
@@ -62,7 +63,7 @@
           "items": [
             {
               "type": "TextBlock",
-              "text": "Other pending tasks:",
+              "text": "Other pending tasks in this file:",
               "weight": "bolder",
               "size": "medium",
               "color": "warning",
@@ -93,8 +94,8 @@
                   "actions": [
                     {
                       "type": "Action.OpenUrl",
-                      "title": "Open in Editor",
-                      "url": "vscode://file/${file}"
+                      "title": "Open in GitLab",
+                      "url": "${issueURL}"
                     }
                   ]
                 }

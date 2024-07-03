@@ -13,7 +13,7 @@ const getAssigneeID = (username) => {
     (assignee) => assignee.name.toLowerCase() === username.toLowerCase(),
   );
   if (!assignee) {
-    console.log("Assignee not found for ", username);
+    // console.log("Assignee not found for ", username);
     return;
   }
   return assignee.id;

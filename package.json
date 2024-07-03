@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "extract_tasks": "node ./scripts/taskParser",
-    "send_alert": "node ./scripts/teamsAlert/",
-    "create_issue": "node ./scripts/gitLabIssue/",
-    "lint": "npx eslint ./sourceCode",
+    "extract-tasks": "node ./scripts/taskParser",
+    "send-alert": "node ./scripts/teamsAlert/",
+    "create-issue": "node ./scripts/gitLabIssue/",
+    "lint": "npx eslint ./sourceCode/",
     "prettier": "prettier --write .",
-    "master_script": "node ./scripts/"
+    "code-debt-manager": "node ./scripts/"
   },
   "type": "module",
   "keywords": [],

@@ -23,9 +23,8 @@ const processEntry = async (entry, fullPath, generateUniqueId, TYPE) => {
     if (match) {
       const userName = match[1];
       const days = getDays(match[3]); // Days is in format <days><W|M|D>
-      const category = match[4];
-      const title = match[5].replace(/^\s*\*+/gm, "").trim();
-      const message = match[6]?.replace(/^\s*\*+/gm, "").trim() || "";
+      const title = match[4].replace(/^\s*\*+/gm, "").trim();
+      const message = match[5]?.replace(/^\s*\*+/gm, "").trim() || "";
 
       const id = generateUniqueId(TYPE, userName, title);
 
@@ -41,7 +40,6 @@ const processEntry = async (entry, fullPath, generateUniqueId, TYPE) => {
         days: days,
         title: title,
         message: message,
-        category: category,
         file: fullPath,
       };
     }
