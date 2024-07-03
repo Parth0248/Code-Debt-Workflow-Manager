@@ -1,4 +1,8 @@
-import { TAG_REGEX, COMMENT_REGEX } from "../syntax/getSyntax.js";
+import {
+  TAG_REGEX,
+  COMMENT_REGEX,
+  ERROR_MESSAGES,
+} from "../syntax/getSyntax.js";
 
 export default {
   meta: {
@@ -9,8 +13,8 @@ export default {
     },
     schema: [],
     messages: {
-      incorrectlyFormatted:
-        "Incorrectly Formatted comment in {{line}}:\n {{comment}}",
+      singleLineError: ERROR_MESSAGES.singleLineError,
+      multiLineError: ERROR_MESSAGES.multiLineError,
     },
   },
   create(context) {
@@ -29,13 +33,19 @@ export default {
                   regex.test(commentValue),
                 );
 
+                const errorMessageId =
+                  comment.type === "Line"
+                    ? "singleLineError"
+                    : "multiLineError";
+
                 if (!isMatch) {
                   context.report({
                     node: comment,
-                    messageId: "incorrectlyFormatted",
+                    messageId: errorMessageId,
                     data: {
                       comment: comment.value,
                       line: comment.loc.start.line,
+                      tag: tag,
                     },
                   });
                 }

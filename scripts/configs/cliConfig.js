@@ -1,4 +1,3 @@
-// cliConfig.js
 import { program } from "commander";
 
 const parseCommandLineArgs = (configArguments) => {

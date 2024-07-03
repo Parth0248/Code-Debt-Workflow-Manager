@@ -4,7 +4,11 @@ import fs from "fs";
 const updateNewIssue = (issueData, newGitLabIssueData) => {
   const newGitLabIssueMap = newGitLabIssueData.reduce((acc, issue) => {
     if (!issue) return acc;
-    acc[issue.title] = issue.id;
+    acc[issue.title] = {
+      id: issue.id,
+      web_url: issue.web_url,
+    };
+
     return acc;
   }, {});
 
@@ -13,7 +17,8 @@ const updateNewIssue = (issueData, newGitLabIssueData) => {
     if (matchingIssue) {
       return {
         ...issue,
-        gitLabID: matchingIssue,
+        gitLabID: matchingIssue.id,
+        issueURL: matchingIssue.web_url,
       };
     }
     return issue;

@@ -4,12 +4,15 @@ dotenv.config(); // Load environment variables from .env file
 import template from "../adaptiveCards/adaptive-card-template.json" assert { type: "json" }; // Assert used for type check [Node requirement]
 import { AdaptiveCards } from "@microsoft/adaptivecards-tools";
 import WebhookTarget from "../webhookTarget.js";
-import updatePendingTasks from "./updatePendingTasks.js";
+
 import pendingTask from "./pendingTask.js";
 import alertText from "../utils/alertText.js";
+import updateTemplate from "./updateTemplate.js";
+import thresholdDays from "../utils/thresholdDays.js";
 
 // Fetch the webhook URL from environment variables
 const webhookUrl = process.env.WEBHOOK_URL;
+const domainName = process.env.DOMAIN_NAME;
 
 if (!webhookUrl) {
   throw new Error("WEBHOOK_URL environment variable is not set.");
@@ -23,18 +26,31 @@ const sendAlert = async (tasks) => {
   pendingTask(pendingTasks, tasks);
 
   const task = tasks[0]; // CHANGE THIS TO A LOOP TO SEND ALERT FOR ALL TASKS
-  sendAlertForTask(task, pendingTasks);
+  // sendAlertForTask(task, pendingTasks);
+
+  for (const task of tasks) {
+    // send alerts if task.days matches one of the thresholdDays values
+
+    const threshold = Object.values(thresholdDays).find(
+      (value) => value === Number(task.days)
+    );
+
+    if (threshold) {
+      await sendAlertForTask(task, pendingTasks);
+    }
+  }
 };
 
-const sendAlertForTask = async (task, pendingTaskCount) => {
-  const pending = pendingTaskCount.get(task.username);
+const sendAlertForTask = async (task, pendingTasks) => {
+  const key = `${task.username}:${task.file}`;
+  const pending = pendingTasks.get(key);
 
   // Create a deep copy of the template
   const cardTemplate = JSON.parse(JSON.stringify(template));
 
   try {
     const alertTitle = alertText(task.days);
-    const userEmail = task.username + "@sprinklr.com";
+    const userEmail = task.username + String(domainName);
     const userName = task.username.split(".")[0];
 
     const modifiedTask = {
@@ -49,15 +65,24 @@ const sendAlertForTask = async (task, pendingTaskCount) => {
 
     const pendingTasks = Array.from(pending.values())
       .filter((task) => task.title !== modifiedTask.title)
-      .map((task) => task.title);
+      .map((task) => ({
+        title: task.title,
+        days: task.days,
+        file: task.file,
+      }));
 
-    // adds max 3 pending tasks to the card to make the Card look less cluttered
-    const updatedCardTemplate = updatePendingTasks(cardTemplate, pendingTasks);
+    // update extra message and all pending tasks from same file to the card
+    const updatedCardTemplate = updateTemplate(
+      cardTemplate,
+      pendingTasks.length,
+      pendingTasks,
+      task.message
+    );
 
+    // Send the adaptive card using the webhook
     await webhookTarget.sendAdaptiveCard(
       AdaptiveCards.declare(updatedCardTemplate).render(modifiedTask)
     );
-    // console.log(JSON.stringify(updatedCardTemplate, null, 2 ))
   } catch (e) {
     console.log(`Failed to send adaptive card. ${e}`);
   }

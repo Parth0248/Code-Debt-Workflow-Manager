@@ -16,4 +16,21 @@ const COMMENT_REGEX = {
   [dpPattern.type]: dpPattern.getLintPatterns(),
 };
 
-export { TAG_REGEX, COMMENT_REGEX };
+const ERROR_MESSAGES = {
+  singleLineError: `Incorrectly Formatted comment in line {{line}}:
+  {{comment}}
+
+  Correct Syntax:
+  // {{tag}} : @user.name : <dd-mm-yyyy> : <days> : <title>
+  `,
+
+  multiLineError: `Incorrectly Formatted comment in line {{line}}:
+  {{comment}}
+
+  Correct Syntax:
+  /* {{tag}} : @user.name : <dd-mm-yyyy> : <days> : <title>
+   * <optional_text> */
+  `,
+};
+
+export { TAG_REGEX, COMMENT_REGEX, ERROR_MESSAGES };

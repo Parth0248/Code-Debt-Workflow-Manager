@@ -1,6 +1,4 @@
 import axios from "axios";
-import fs from "fs";
-import path from "path";
 import config from "../../configs/config.js";
 const commentTypes = config.TASK_TYPE;
 import storeIssue from "./storeIssue.js";

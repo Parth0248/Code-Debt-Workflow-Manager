@@ -2,11 +2,11 @@ import parseCommandLineArgs from "./configs/cliConfig.js";
 import setConfig from "./configs/setConfig.js";
 import { exec } from "child_process";
 
-// Capture CLI arguments
+// Capture CLI arguments and set configuration
 const cliArgs = parseCommandLineArgs(process.argv);
-// Set config based on CLI arguments
 const config = setConfig(cliArgs);
 
+// Runs all scripts in the order specified in the config
 const runScript = (scriptName) => {
   return new Promise((resolve, reject) => {
     const command =
@@ -18,10 +18,7 @@ const runScript = (scriptName) => {
       command,
       { env: { ...process.env, FORCE_COLOR: "1" } },
       (error, stdout, stderr) => {
-        if (error && scriptName !== "lint") {
-          console.error(
-            `Error running script "${scriptName}": ${error.message}`,
-          );
+        if (error) {
           reject(error);
           return;
         }

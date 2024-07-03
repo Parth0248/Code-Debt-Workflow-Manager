@@ -5,7 +5,7 @@ const defaultConfig = {
   FILE_TYPE: [".js", ".mjs", ".cjs", ".ts", ".jsx", ".tsx", ".vue", ".coffee"],
   TASK_TYPE: ["TODO", "FIXME", "DP"],
   IGNORE_DIR: ["node_modules", "bower_components", "public"],
-  SCRIPTS: ["lint", "extract_tasks", "create_issue", "send_alert"],
+  SCRIPTS: ["lint", "extract-tasks", "create-issue", "send-alert"],
 };
 
 export default defaultConfig;
